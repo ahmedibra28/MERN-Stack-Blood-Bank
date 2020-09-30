@@ -83,7 +83,7 @@ BloodStore.propTypes = {
   addBloodStore: PropTypes.func.isRequired,
   deleteBloodStore: PropTypes.func.isRequired,
   updateBloodStore: PropTypes.func.isRequired,
-  bloodStores: PropTypes.func.isRequired,
+  bloodStores: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({

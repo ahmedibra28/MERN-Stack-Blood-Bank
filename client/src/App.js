@@ -11,6 +11,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import Layout from './components/layout/Layout';
 import BloodRequest from './components/bloodRequest/BloodRequest';
 import BloodStore from './components/bloodStore/BloodStore';
+import BloodIssue from './components/bloodIssue/BloodIssue';
 
 import { loadUser } from './actions/auth';
 import { LOGOUT } from './actions/types';
@@ -62,6 +63,11 @@ const App = () => {
               component={BloodRequest}
             />
             <PrivateRoute exact path='/blood-store' component={BloodStore} />
+            <PrivateRoute
+              exact
+              path='/blood-issue/:id'
+              component={BloodIssue}
+            />
             {/* <Route component={NoMatch} /> */}
           </Layout>
         </Switch>

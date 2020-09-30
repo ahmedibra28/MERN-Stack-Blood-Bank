@@ -86,7 +86,7 @@ BloodRequest.propTypes = {
   addBloodRequest: PropTypes.func.isRequired,
   deleteBloodRequest: PropTypes.func.isRequired,
   updateBloodRequest: PropTypes.func.isRequired,
-  bloodRequests: PropTypes.array.isRequired,
+  bloodRequests: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({

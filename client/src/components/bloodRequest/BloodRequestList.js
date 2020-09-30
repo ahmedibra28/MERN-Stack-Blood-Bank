@@ -3,6 +3,7 @@ import Moment from 'react-moment';
 import moment from 'moment';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import EditIcon from '@material-ui/icons/Edit';
+import { Link } from 'react-router-dom';
 
 const BloodRequestList = ({
   handleUpdate,
@@ -67,7 +68,14 @@ const BloodRequestList = ({
                         className='btn btn-outline-danger btn-sm'
                       >
                         <DeleteForeverIcon fontSize='small' />
-                      </button>
+                      </button>{' '}
+                      <Link
+                        to={`/blood-issue/${request._id}`}
+                        // onClick={() => deleteBloodRequest(request._id)}
+                        className='btn btn-outline-danger btn-sm'
+                      >
+                        S
+                      </Link>
                     </td>
                   </tr>
                 );

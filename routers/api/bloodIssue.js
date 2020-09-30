@@ -13,7 +13,7 @@ router.get('/', auth, async (req, res) => {
   try {
     const bloodIssue = await BloodIssue.find()
       .sort({ date: -1 })
-      .populate('blood_request');
+      .populate('patient', ['patient_id', 'patient_name', 'blood_group']);
     res.json(bloodIssue);
   } catch (err) {
     console.error(err.message);
@@ -64,7 +64,13 @@ router.post(
       bloodIssue = new BloodIssue(bloodIssueFields);
       await bloodIssue.save();
 
-      return res.status(200).json(await BloodIssue.find().sort({ date: -1 }));
+      return res
+        .status(200)
+        .json(
+          await BloodIssue.find()
+            .sort({ date: -1 })
+            .populate('patient', ['patient_id', 'patient_name', 'blood_group'])
+        );
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
@@ -83,7 +89,13 @@ router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
 
     if (!bloodIssue) return res.json({ errors: [{ msg: 'Invalid ID' }] });
 
-    return res.status(200).json(await BloodIssue.find().sort({ date: -1 }));
+    return res
+      .status(200)
+      .json(
+        await BloodIssue.find()
+          .sort({ date: -1 })
+          .populate('patient', ['patient_id', 'patient_name', 'blood_group'])
+      );
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');

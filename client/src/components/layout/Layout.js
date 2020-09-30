@@ -38,6 +38,11 @@ const Navbar = ({
         </Link>
       </li>
       <li className='nav-item'>
+        <Link to='/blood-issue' className='nav-link'>
+          B. Issue
+        </Link>
+      </li>
+      <li className='nav-item'>
         <Link to='/change-password' className='nav-link'>
           <LockOpenIcon fontSize='small' />
           Change Password

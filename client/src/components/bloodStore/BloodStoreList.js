@@ -27,37 +27,39 @@ const BloodStoreList = ({ handleUpdate, bloodStores, deleteBloodStore }) => {
           <tbody>
             {bloodStores &&
               bloodStores.map((store) => {
-                return (
-                  <tr
-                    key={store._id}
-                    id={store._id % 2 === 0 ? 'orange' : 'green'}
-                  >
-                    <td>
-                      <Moment format='YYYY-MM-DD HH:mm:ss'>
-                        {moment(store.date)}
-                      </Moment>
-                    </td>
-                    <td>{store.blood_group}</td>
-                    <td>{store.blood_component}</td>
-                    <td>{store.unit}</td>
-                    <td>{store.bag}</td>
+                if (store.status === 'Stock') {
+                  return (
+                    <tr
+                      key={store._id}
+                      id={store._id % 2 === 0 ? 'orange' : 'green'}
+                    >
+                      <td>
+                        <Moment format='YYYY-MM-DD HH:mm:ss'>
+                          {moment(store.date)}
+                        </Moment>
+                      </td>
+                      <td>{store.blood_group}</td>
+                      <td>{store.blood_component}</td>
+                      <td>{store.unit}</td>
+                      <td>{store.bag}</td>
 
-                    <td>
-                      <button
-                        onClick={() => handleUpdate(store)}
-                        className='btn btn-outline-info btn-sm'
-                      >
-                        <EditIcon fontSize='small' />
-                      </button>{' '}
-                      <button
-                        onClick={() => deleteBloodStore(store._id)}
-                        className='btn btn-outline-danger btn-sm'
-                      >
-                        <DeleteForeverIcon fontSize='small' />
-                      </button>
-                    </td>
-                  </tr>
-                );
+                      <td>
+                        <button
+                          onClick={() => handleUpdate(store)}
+                          className='btn btn-outline-info btn-sm'
+                        >
+                          <EditIcon fontSize='small' />
+                        </button>{' '}
+                        <button
+                          onClick={() => deleteBloodStore(store._id)}
+                          className='btn btn-outline-danger btn-sm'
+                        >
+                          <DeleteForeverIcon fontSize='small' />
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                }
               })}
           </tbody>
         </table>
