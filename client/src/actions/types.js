@@ -1,0 +1,18 @@
+export const SET_ALERT = 'SET_ALERT';
+export const REMOVE_ALERT = 'REMOVE_ALERT';
+
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REGISTER_FAIL = 'REGISTER_FAIL';
+
+export const USER_LOADED = 'USER_LOADED';
+export const AUTH_ERROR = 'AUTH_ERROR';
+
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
+
+export const LOGOUT = 'LOGOUT';
+
+export const BLOOD_REQUEST_ERROR = 'BLOOD_REQUEST_ERROR';
+export const GET_BLOOD_REQUESTS = 'GET_BLOOD_REQUESTS';
+export const ADD_BLOOD_REQUEST = 'ADD_BLOOD_REQUEST';
+export const UPDATE_BLOOD_REQUEST = 'UPDATE_BLOOD_REQUEST';
