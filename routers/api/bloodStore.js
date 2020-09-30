@@ -10,7 +10,7 @@ const BloodStore = require('../../models/BloodStore');
 // @access   Private
 router.get('/', auth, async (req, res) => {
   try {
-    const bloodStore = await BloodStore.find();
+    const bloodStore = await BloodStore.find().sort({ date: -1 });
     res.json(bloodStore);
   } catch (err) {
     console.error(err.message);
@@ -46,7 +46,7 @@ router.post(
     const blood_group = req.body.blood_group;
     const blood_component = req.body.blood_component;
     const unit = req.body.unit;
-    const bag = req.body.bag;
+    const bag = req.body.bag.toUpperCase();
 
     try {
       const bloodStoreFields = {
@@ -62,7 +62,7 @@ router.post(
       bloodStore = new BloodStore(bloodStoreFields);
       await bloodStore.save();
 
-      return res.status(200).json(await BloodStore.find());
+      return res.status(200).json(await BloodStore.find().sort({ date: -1 }));
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
@@ -99,7 +99,7 @@ router.put(
     const blood_group = req.body.blood_group;
     const blood_component = req.body.blood_component;
     const unit = req.body.unit;
-    const bag = req.body.bag;
+    const bag = req.body.bag.toUpperCase();
 
     try {
       const bloodStoreFields = {
@@ -117,7 +117,7 @@ router.put(
         { $set: bloodStoreFields }
       );
 
-      return res.status(200).json(await BloodStore.find());
+      return res.status(200).json(await BloodStore.find().sort({ date: -1 }));
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
@@ -136,7 +136,7 @@ router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
 
     if (!bloodStore) return res.json({ errors: [{ msg: 'Invalid ID' }] });
 
-    return res.status(200).json(await BloodStore.find());
+    return res.status(200).json(await BloodStore.find().sort({ date: -1 }));
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');

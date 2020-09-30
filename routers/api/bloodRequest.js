@@ -10,7 +10,7 @@ const BloodRequest = require('../../models/BloodRequest');
 // @access   Private
 router.get('/', auth, async (req, res) => {
   try {
-    const bloodRequest = await BloodRequest.find();
+    const bloodRequest = await BloodRequest.find().sort({ date: -1 });
     res.json(bloodRequest);
   } catch (err) {
     console.error(err.message);
@@ -73,7 +73,7 @@ router.post(
       bloodRequest = new BloodRequest(bloodRequestFields);
       await bloodRequest.save();
 
-      return res.status(200).json(await BloodRequest.find());
+      return res.status(200).json(await BloodRequest.find().sort({ date: -1 }));
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
@@ -139,7 +139,7 @@ router.put(
         { $set: bloodRequestFields }
       );
 
-      return res.status(200).json(await BloodRequest.find());
+      return res.status(200).json(await BloodRequest.find().sort({ date: -1 }));
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
@@ -158,7 +158,7 @@ router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
 
     if (!bloodRequest) return res.json({ errors: [{ msg: 'Invalid ID' }] });
 
-    return res.status(200).json(await BloodRequest.find());
+    return res.status(200).json(await BloodRequest.find().sort({ date: -1 }));
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');

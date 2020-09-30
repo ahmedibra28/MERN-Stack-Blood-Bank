@@ -8,6 +8,9 @@ import ChangePassword from './components/auth/ChangePassword';
 import Register from './components/auth/Register';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
+import Layout from './components/layout/Layout';
+import BloodRequest from './components/bloodRequest/BloodRequest';
+import BloodStore from './components/bloodStore/BloodStore';
 
 import { loadUser } from './actions/auth';
 import { LOGOUT } from './actions/types';
@@ -17,8 +20,6 @@ import PrivateRoute from './components/routes/PrivateRoute';
 // Redux
 import { Provider } from 'react-redux';
 import { store } from './store';
-import Layout from './components/layout/Layout';
-import BloodRequest from './components/bloodRequest/BloodRequest';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -60,6 +61,7 @@ const App = () => {
               path='/blood-request'
               component={BloodRequest}
             />
+            <PrivateRoute exact path='/blood-store' component={BloodStore} />
             {/* <Route component={NoMatch} /> */}
           </Layout>
         </Switch>

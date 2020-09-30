@@ -2,43 +2,43 @@ import axios from 'axios';
 import { setAlert } from './alert';
 
 import {
-  ADD_BLOOD_REQUEST,
-  BLOOD_REQUEST_ERROR,
-  GET_BLOOD_REQUESTS,
-  UPDATE_BLOOD_REQUEST,
+  ADD_BLOOD_STORE,
+  BLOOD_STORE_ERROR,
+  GET_BLOOD_STORES,
+  UPDATE_BLOOD_STORE,
 } from './types';
 
-// Get blood requests
-export const getBloodRequests = () => async (dispatch) => {
+// Get blood store
+export const getBloodStores = () => async (dispatch) => {
   try {
-    const res = await axios.get('/api/blood-request');
+    const res = await axios.get('/api/blood-store');
     dispatch({
-      type: GET_BLOOD_REQUESTS,
+      type: GET_BLOOD_STORES,
       payload: res.data,
     });
   } catch (err) {
     dispatch({
-      type: BLOOD_REQUEST_ERROR,
+      type: BLOOD_STORE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
 };
 
-// Create blood request
-export const addBloodRequest = (formData) => async (dispatch) => {
+// Create blood store
+export const addBloodStore = (formData) => async (dispatch) => {
   try {
     const config = {
       headers: { 'Content-Type': 'application/json' },
     };
 
-    const res = await axios.post('/api/blood-request', formData, config);
+    const res = await axios.post('/api/blood-store', formData, config);
 
     dispatch({
-      type: ADD_BLOOD_REQUEST,
+      type: ADD_BLOOD_STORE,
       payload: res.data,
     });
 
-    dispatch(setAlert('Successfully Added Blood Request', 'success'));
+    dispatch(setAlert('Successfully Added Blood Store', 'success'));
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
@@ -46,31 +46,31 @@ export const addBloodRequest = (formData) => async (dispatch) => {
     }
 
     dispatch({
-      type: BLOOD_REQUEST_ERROR,
+      type: BLOOD_STORE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
 };
 
-// Update blood request
-export const updateBloodRequest = (formData) => async (dispatch) => {
+// Update blood store
+export const updateBloodStore = (formData) => async (dispatch) => {
   try {
     const config = {
       headers: { 'Content-Type': 'application/json' },
     };
 
     const res = await axios.put(
-      `/api/blood-request/${formData._id}`,
+      `/api/blood-store/${formData._id}`,
       formData,
       config
     );
 
     dispatch({
-      type: UPDATE_BLOOD_REQUEST,
+      type: UPDATE_BLOOD_STORE,
       payload: res.data,
     });
 
-    dispatch(setAlert('Successfully Updated Blood Request', 'success'));
+    dispatch(setAlert('Successfully Updated Blood Store', 'success'));
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
@@ -78,25 +78,25 @@ export const updateBloodRequest = (formData) => async (dispatch) => {
     }
 
     dispatch({
-      type: BLOOD_REQUEST_ERROR,
+      type: BLOOD_STORE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
 };
 
-// Delete blood request
-export const deleteBloodRequest = (id) => async (dispatch) => {
+// Delete blood store
+export const deleteBloodStore = (id) => async (dispatch) => {
   try {
-    const res = await axios.delete(`/api/blood-request/${id}`);
+    const res = await axios.delete(`/api/blood-store/${id}`);
     dispatch({
-      type: UPDATE_BLOOD_REQUEST,
+      type: UPDATE_BLOOD_STORE,
       payload: res.data,
     });
 
-    dispatch(setAlert('Successfully Deleted Blood Request', 'success'));
+    dispatch(setAlert('Successfully Deleted Blood Store', 'success'));
   } catch (err) {
     dispatch({
-      type: BLOOD_REQUEST_ERROR,
+      type: BLOOD_STORE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
