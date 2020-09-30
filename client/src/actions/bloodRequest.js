@@ -72,15 +72,16 @@ export const updateBloodRequest = (formData) => async (dispatch) => {
 
     dispatch(setAlert('Successfully Updated Blood Request', 'success'));
   } catch (err) {
-    const errors = err.response.data.errors;
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
-    }
-
     dispatch({
       type: BLOOD_REQUEST_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
+
+    console.log(err);
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
   }
 };
 

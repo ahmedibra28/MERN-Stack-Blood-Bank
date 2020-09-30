@@ -46,13 +46,11 @@ router.post(
     const rbc = req.body.rbc;
     const wb = req.body.wb;
 
-    if (
-      plasma === undefined &&
-      platelet === undefined &&
-      rbc === undefined &&
-      wb === undefined
-    )
-      return res.json({ errors: [{ msg: 'Blood Component is required' }] });
+    if (plasma === '' && platelet === '' && rbc === '' && wb === '') {
+      return res
+        .status(400)
+        .json({ errors: [{ msg: 'Blood Component is required' }] });
+    }
 
     try {
       const bloodRequestFields = {
@@ -81,7 +79,7 @@ router.post(
   }
 );
 
-// @route    POST api/blood-request/:id
+// @route    PUT api/blood-request/:id
 // @desc     Update blood request
 // @access   Private
 router.put(
@@ -110,15 +108,13 @@ router.put(
     const rbc = req.body.rbc;
     const wb = req.body.wb;
 
-    if (
-      plasma === undefined &&
-      platelet === undefined &&
-      rbc === undefined &&
-      wb === undefined
-    )
-      return res.json({ errors: [{ msg: 'Blood Component is required' }] });
-
     try {
+      if (plasma === '' && platelet === '' && rbc === '' && wb === '') {
+        return res
+          .status(400)
+          .json({ errors: [{ msg: 'Blood Component is required' }] });
+      }
+
       const bloodRequestFields = {
         user,
         patient_id,

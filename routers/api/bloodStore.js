@@ -32,6 +32,10 @@ router.post(
       check('blood_component', 'Blood Component is required').not().isEmpty(),
       check('unit', 'Unit is required').not().isEmpty(),
       check('bag', 'Bag is required').not().isEmpty(),
+      check('hb', 'HB must between 12 and 20').isInt({
+        min: 12,
+        max: 20,
+      }),
     ],
   ],
   async (req, res) => {
@@ -85,6 +89,10 @@ router.put(
       check('blood_component', 'Blood Component is required').not().isEmpty(),
       check('unit', 'Unit is required').not().isEmpty(),
       check('bag', 'Bag is required').not().isEmpty(),
+      check('hb', 'HB must between 12 and 20').isInt({
+        min: 12,
+        max: 20,
+      }),
     ],
   ],
   async (req, res) => {
