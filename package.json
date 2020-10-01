@@ -1,7 +1,7 @@
 {
-  "name": "mern-stack-boilerplate",
+  "name": "mern-stack-blood-bank",
   "version": "1.0.0",
-  "description": "Complete MERN-Stack boilerplate",
+  "description": "Complete MERN-Stack blood-bank",
   "main": "server.js",
   "scripts": {
     "start": "node server",
