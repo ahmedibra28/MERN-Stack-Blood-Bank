@@ -43,10 +43,10 @@ function BloodRequest({
       patient_id: e.patient_id,
       patient_name: e.patient_name,
       blood_group: e.blood_group,
-      platelet: e.blood_component[0].platelet,
-      plasma: e.blood_component[0].plasma,
-      rbc: e.blood_component[0].rbc,
-      wb: e.blood_component[0].wb,
+      platelet: e.blood_component.platelet,
+      plasma: e.blood_component.plasma,
+      rbc: e.blood_component.rbc,
+      wb: e.blood_component.wb,
     });
     setEdit(true);
   };

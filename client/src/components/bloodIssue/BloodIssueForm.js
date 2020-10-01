@@ -68,7 +68,7 @@ function BloodIssueForm({
         {bloodRequests.map((request) => {
           if (
             request._id === blood_request_id &&
-            request.blood_component[0].plasma > 0
+            request.blood_component.plasma > 0
           ) {
             return (
               <div className="input-group" key={request._id}>
@@ -107,7 +107,7 @@ function BloodIssueForm({
         {bloodRequests.map((request) => {
           if (
             request._id === blood_request_id &&
-            request.blood_component[0].platelet > 0
+            request.blood_component.platelet > 0
           ) {
             return (
               <div className="input-group" key={request._id}>
@@ -146,7 +146,7 @@ function BloodIssueForm({
         {bloodRequests.map((request) => {
           if (
             request._id === blood_request_id &&
-            request.blood_component[0].rbc > 0
+            request.blood_component.rbc > 0
           ) {
             return (
               <div className="input-group" key={request._id}>
@@ -185,7 +185,7 @@ function BloodIssueForm({
         {bloodRequests.map((request) => {
           if (
             request._id === blood_request_id &&
-            request.blood_component[0].wb > 0
+            request.blood_component.wb > 0
           ) {
             return (
               <div className="input-group" key={request._id}>

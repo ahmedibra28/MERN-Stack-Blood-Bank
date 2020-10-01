@@ -12,6 +12,14 @@ const BloodRequestList = ({
   deleteBloodRequest,
   user,
 }) => {
+  const filter = bloodRequests.filter((request) => {
+    const plasma = request.blood_component.plasma;
+    const platelet = request.blood_component.platelet;
+    const rbc = request.blood_component.rbc;
+    const wb = request.blood_component.wb;
+
+    return plasma > 0 || platelet > 0 || rbc > 0 || wb > 0;
+  });
   return (
     <div>
       <h3 className="text-center form-title mb-4">Blood Request List</h3>
@@ -20,7 +28,7 @@ const BloodRequestList = ({
         <table className="table table-sm table-hover table-bordered caption-top">
           <caption>
             {/* {bloodRequests && bloodRequests.length} records were found */}
-            Pending Request Order
+            {filter.length} - Pending Request Order
           </caption>
           <thead>
             <tr>
@@ -38,10 +46,10 @@ const BloodRequestList = ({
           <tbody>
             {bloodRequests &&
               bloodRequests.map((request) => {
-                const plasma = request.blood_component[0].plasma;
-                const platelet = request.blood_component[0].platelet;
-                const rbc = request.blood_component[0].rbc;
-                const wb = request.blood_component[0].wb;
+                const plasma = request.blood_component.plasma;
+                const platelet = request.blood_component.platelet;
+                const rbc = request.blood_component.rbc;
+                const wb = request.blood_component.wb;
 
                 {
                   if (plasma > 0 || platelet > 0 || rbc > 0 || wb > 0) {
@@ -58,14 +66,11 @@ const BloodRequestList = ({
                         <td>{request.patient_id}</td>
                         <td>{request.patient_name}</td>
                         <td>{request.blood_group}</td>
-                        {request.blood_component.map((comp) => (
-                          <Fragment key={comp._id}>
-                            <td>{comp.plasma}</td>
-                            <td>{comp.platelet}</td>
-                            <td>{comp.rbc}</td>
-                            <td>{comp.wb}</td>
-                          </Fragment>
-                        ))}
+                        <td>{request.blood_component.plasma}</td>
+                        <td>{request.blood_component.platelet}</td>
+                        <td>{request.blood_component.rbc}</td>
+                        <td>{request.blood_component.wb}</td>
+
                         <td>
                           <button
                             onClick={() => handleUpdate(request)}

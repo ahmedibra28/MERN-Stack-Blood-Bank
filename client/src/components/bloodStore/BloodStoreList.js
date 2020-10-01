@@ -10,13 +10,16 @@ const BloodStoreList = ({
   deleteBloodStore,
   user,
 }) => {
+  const filter = bloodStores.filter((store) => {
+    return store.status === "Stock";
+  });
   return (
     <div>
       <h3 className="text-center form-title mb-4">Blood Store List</h3>
       <hr />
       <div className="table-responsive">
         <table className="table table-sm table-hover table-bordered caption-top">
-          <caption>Current Database</caption>
+          <caption>{filter.length} - Blood In Database</caption>
           <thead>
             <tr>
               <th>Date & Time</th>

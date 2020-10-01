@@ -41,15 +41,10 @@ const BloodIssueList = ({ handleUpdate, bloodIssues, deleteBloodIssue }) => {
                     </td>
                     <td>{issue.patient.patient_id}</td>
                     <td>{issue.patient.patient_name}</td>
-
-                    {issue.blood_component.map((iss) => (
-                      <Fragment key={iss._id}>
-                        <td>{iss.plasma}</td>
-                        <td>{iss.platelet}</td>
-                        <td>{iss.rbc}</td>
-                        <td>{iss.wb}</td>
-                      </Fragment>
-                    ))}
+                    <td>{issue.blood_component.plasma}</td>
+                    <td>{issue.blood_component.platelet}</td>
+                    <td>{issue.blood_component.rbc}</td>
+                    <td>{issue.blood_component.wb}</td>
 
                     {/* <td>
                       <button

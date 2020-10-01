@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import BloodIssueForm from './BloodIssueForm';
-import BloodIssueList from './BloodIssueList';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import BloodIssueForm from "./BloodIssueForm";
+import BloodIssueList from "./BloodIssueList";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import {
   getBloodIssues,
   addBloodIssue,
   deleteBloodIssue,
-} from '../../actions/bloodIssue';
+} from "../../actions/bloodIssue";
 import {
   getBloodRequests,
   updateBloodRequest,
-} from '../../actions/bloodRequest';
-import { getBloodStores, updateBloodStore } from '../../actions/bloodStore';
-import Spinner from '../layout/Spinner';
+} from "../../actions/bloodRequest";
+import { getBloodStores, updateBloodStore } from "../../actions/bloodStore";
+import Spinner from "../layout/Spinner";
 
 const initialValues = {
-  patient: '',
-  plasma: '',
-  platelet: '',
-  rbc: '',
-  wb: '',
+  patient: "",
+  plasma: "",
+  platelet: "",
+  rbc: "",
+  wb: "",
 };
 
 function BloodIssue({
@@ -60,43 +60,42 @@ function BloodIssue({
 
     // console.log(values);
 
-    if (values.plasma !== '' && values.platelet !== '') {
-      return console.log('Please, select only one option at atime');
+    if (values.plasma !== "" && values.platelet !== "") {
+      return console.log("Please, select only one option at atime");
     }
-    if (values.plasma !== '' && values.rbc !== '') {
-      return console.log('Please, select only one option at atime');
+    if (values.plasma !== "" && values.rbc !== "") {
+      return console.log("Please, select only one option at atime");
     }
-    if (values.plasma !== '' && values.wb !== '') {
-      return console.log('Please, select only one option at atime');
+    if (values.plasma !== "" && values.wb !== "") {
+      return console.log("Please, select only one option at atime");
     }
-    if (values.platelet !== '' && values.rbc !== '') {
-      return console.log('Please, select only one option at atime');
+    if (values.platelet !== "" && values.rbc !== "") {
+      return console.log("Please, select only one option at atime");
     }
-    if (values.platelet !== '' && values.wb !== '') {
-      return console.log('Please, select only one option at atime');
+    if (values.platelet !== "" && values.wb !== "") {
+      return console.log("Please, select only one option at atime");
     }
-    if (values.rbc !== '' && values.wb !== '') {
-      return console.log('Please, select only one option at atime');
+    if (values.rbc !== "" && values.wb !== "") {
+      return console.log("Please, select only one option at atime");
     }
 
     // Plasma
-    if (values.plasma !== '') {
+    if (values.plasma !== "") {
       bloodRequests.map((request) => {
         if (
-          request.blood_component[0].plasma > 0 &&
+          request.blood_component.plasma > 0 &&
           request._id === blood_request_id
         ) {
-          const subtractedPlasma =
-            parseInt(request.blood_component[0].plasma) - 1;
+          const subtractedPlasma = parseInt(request.blood_component.plasma) - 1;
           const newPlasma = {
             _id: request._id,
             blood_group: request.blood_group,
             patient_id: request.patient_id,
             patient_name: request.patient_name,
             plasma: subtractedPlasma,
-            platelet: request.blood_component[0].platelet,
-            rbc: request.blood_component[0].rbc,
-            wb: request.blood_component[0].wb,
+            platelet: request.blood_component.platelet,
+            rbc: request.blood_component.rbc,
+            wb: request.blood_component.wb,
           };
 
           bloodStores &&
@@ -110,7 +109,7 @@ function BloodIssue({
                   blood_group: store.blood_group,
                   donor: store.donor,
                   hb: store.hb,
-                  status: 'Issued',
+                  status: "Issued",
                   unit: store.unit,
                 };
                 updateBloodRequest(newPlasma);
@@ -124,23 +123,23 @@ function BloodIssue({
     }
 
     // Platelet
-    if (values.platelet !== '') {
+    if (values.platelet !== "") {
       bloodRequests.map((request) => {
         if (
-          request.blood_component[0].platelet > 0 &&
+          request.blood_component.platelet > 0 &&
           request._id === blood_request_id
         ) {
           const subtractedPlatelet =
-            parseInt(request.blood_component[0].platelet) - 1;
+            parseInt(request.blood_component.platelet) - 1;
           const newPlatelet = {
             _id: request._id,
             blood_group: request.blood_group,
             patient_id: request.patient_id,
             patient_name: request.patient_name,
-            plasma: request.blood_component[0].plasma,
+            plasma: request.blood_component.plasma,
             platelet: subtractedPlatelet,
-            rbc: request.blood_component[0].rbc,
-            wb: request.blood_component[0].wb,
+            rbc: request.blood_component.rbc,
+            wb: request.blood_component.wb,
           };
           bloodStores &&
             bloodStores.map((store) => {
@@ -152,7 +151,7 @@ function BloodIssue({
                   blood_group: store.blood_group,
                   donor: store.donor,
                   hb: store.hb,
-                  status: 'Issued',
+                  status: "Issued",
                   unit: store.unit,
                 };
                 updateBloodRequest(newPlatelet);
@@ -166,22 +165,22 @@ function BloodIssue({
     }
 
     // RBC
-    if (values.rbc !== '') {
+    if (values.rbc !== "") {
       bloodRequests.map((request) => {
         if (
-          request.blood_component[0].rbc > 0 &&
+          request.blood_component.rbc > 0 &&
           request._id === blood_request_id
         ) {
-          const subtractedRBC = parseInt(request.blood_component[0].rbc) - 1;
+          const subtractedRBC = parseInt(request.blood_component.rbc) - 1;
           const newRBC = {
             _id: request._id,
             blood_group: request.blood_group,
             patient_id: request.patient_id,
             patient_name: request.patient_name,
-            plasma: request.blood_component[0].plasma,
-            platelet: request.blood_component[0].platelet,
+            plasma: request.blood_component.plasma,
+            platelet: request.blood_component.platelet,
             rbc: subtractedRBC,
-            wb: request.blood_component[0].wb,
+            wb: request.blood_component.wb,
           };
           bloodStores &&
             bloodStores.map((store) => {
@@ -193,7 +192,7 @@ function BloodIssue({
                   blood_group: store.blood_group,
                   donor: store.donor,
                   hb: store.hb,
-                  status: 'Issued',
+                  status: "Issued",
                   unit: store.unit,
                 };
                 updateBloodRequest(newRBC);
@@ -207,21 +206,21 @@ function BloodIssue({
     }
 
     // Whole Blood
-    if (values.wb !== '') {
+    if (values.wb !== "") {
       bloodRequests.map((request) => {
         if (
-          request.blood_component[0].wb > 0 &&
+          request.blood_component.wb > 0 &&
           request._id === blood_request_id
         ) {
-          const subtractedWB = parseInt(request.blood_component[0].wb) - 1;
+          const subtractedWB = parseInt(request.blood_component.wb) - 1;
           const newWB = {
             _id: request._id,
             blood_group: request.blood_group,
             patient_id: request.patient_id,
             patient_name: request.patient_name,
-            plasma: request.blood_component[0].plasma,
-            platelet: request.blood_component[0].platelet,
-            rbc: request.blood_component[0].rbc,
+            plasma: request.blood_component.plasma,
+            platelet: request.blood_component.platelet,
+            rbc: request.blood_component.rbc,
             wb: subtractedWB,
           };
           bloodStores &&
@@ -234,7 +233,7 @@ function BloodIssue({
                   blood_group: store.blood_group,
                   donor: store.donor,
                   hb: store.hb,
-                  status: 'Issued',
+                  status: "Issued",
                   unit: store.unit,
                 };
                 updateBloodRequest(newWB);
@@ -259,8 +258,8 @@ function BloodIssue({
   return loading ? (
     <Spinner />
   ) : (
-    <div className='row pt-4'>
-      <div className='col-md-4'>
+    <div className="row pt-4">
+      <div className="col-md-4">
         <BloodIssueForm
           handleSubmit={handleSubmit}
           handleChange={handleChange}
@@ -270,7 +269,7 @@ function BloodIssue({
           bloodStores={bloodStores}
         />
       </div>
-      <div className='col-md-8'>
+      <div className="col-md-8">
         <BloodIssueList
           handleUpdate={handleUpdate}
           deleteBloodIssue={deleteBloodIssue}

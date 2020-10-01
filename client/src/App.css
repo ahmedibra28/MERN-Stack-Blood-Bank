@@ -1,6 +1,9 @@
-@import url(https://fonts.googleapis.com/css?family=Hind:500);
+@import url("https://fonts.googleapis.com/css?family=Hind:500");
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Tenali+Ramakrishna&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Athiti:wght@500&display=swap"); */
 body {
-  font-family: 'Hind', sans-serif;
+  font-family: "Hind", sans-serif;
 }
 
 /* navbar */
@@ -112,7 +115,8 @@ svg {
   font-size: 26px;
 }
 
-.text-muted, a {
+.text-muted,
+a {
   color: #3fa6f0;
 }
 
@@ -130,6 +134,26 @@ svg {
   border-left: solid 5px rgb(0, 255, 128);
 }
 
-hr {
+hr,
+.summary {
   color: #3fa6f0;
+}
+
+.list-group-item {
+  color: #3fa6f0;
+  font-weight: 100;
+  font-family: "VT323", monospace;
+  /* font-family: "Tenali Ramakrishna", sans-serif; */
+  /* font-family: "Athiti", sans-serif; */
+}
+.list-group-item strong {
+  color: #eaf6ff;
+  background-color: #63b3ed;
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+
+.card-header {
+  background-color: #63b3ed;
+  color: #eaf6ff;
 }
