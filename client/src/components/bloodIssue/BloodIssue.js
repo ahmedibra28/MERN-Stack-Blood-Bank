@@ -9,7 +9,10 @@ import {
   deleteBloodIssue,
   updateBloodIssue,
 } from '../../actions/bloodIssue';
-import { getBloodRequests } from '../../actions/bloodRequest';
+import {
+  getBloodRequests,
+  updateBloodRequest,
+} from '../../actions/bloodRequest';
 import { getBloodStores } from '../../actions/bloodStore';
 import Spinner from '../layout/Spinner';
 
@@ -28,6 +31,7 @@ function BloodIssue({
   addBloodIssue,
   updateBloodIssue,
   getBloodRequests,
+  updateBloodRequest,
   bloodRequests,
   getBloodStores,
   bloodStores,
@@ -52,10 +56,29 @@ function BloodIssue({
     setEdit(true);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    edit ? updateBloodIssue(values) : addBloodIssue(values);
+    // edit ? updateBloodIssue(values) : addBloodIssue(values);
     console.log(values);
+
+    if (values.plasma !== '' && values.platelet !== '') {
+      return console.log('Please, select only one option at atime');
+    }
+    if (values.plasma !== '' && values.rbc !== '') {
+      return console.log('Please, select only one option at atime');
+    }
+    if (values.plasma !== '' && values.wb !== '') {
+      return console.log('Please, select only one option at atime');
+    }
+    if (values.platelet !== '' && values.rbc !== '') {
+      return console.log('Please, select only one option at atime');
+    }
+    if (values.platelet !== '' && values.wb !== '') {
+      return console.log('Please, select only one option at atime');
+    }
+    if (values.rbc !== '' && values.wb !== '') {
+      return console.log('Please, select only one option at atime');
+    }
 
     // Plasma
     if (values.plasma !== '') {
@@ -64,7 +87,21 @@ function BloodIssue({
           request.blood_component[0].plasma > 0 &&
           request._id === blood_request_id
         ) {
-          console.log('Found plasma');
+          // console.log('Found plasma');
+          // console.log(request);
+          const subtractedPlasma =
+            parseInt(request.blood_component[0].plasma) - 1;
+          const newPlasma = {
+            _id: request._id,
+            blood_group: request.blood_group,
+            patient_id: request.patient_id,
+            patient_name: request.patient_name,
+            plasma: subtractedPlasma,
+            platelet: request.blood_component[0].platelet,
+            rbc: request.blood_component[0].rbc,
+            wb: request.blood_component[0].wb,
+          };
+          updateBloodRequest(newPlasma);
         }
       });
     }
@@ -76,7 +113,19 @@ function BloodIssue({
           request.blood_component[0].platelet > 0 &&
           request._id === blood_request_id
         ) {
-          console.log('Found platelet');
+          const subtractedPlatelet =
+            parseInt(request.blood_component[0].platelet) - 1;
+          const newPlatelet = {
+            _id: request._id,
+            blood_group: request.blood_group,
+            patient_id: request.patient_id,
+            patient_name: request.patient_name,
+            plasma: request.blood_component[0].plasma,
+            platelet: subtractedPlatelet,
+            rbc: request.blood_component[0].rbc,
+            wb: request.blood_component[0].wb,
+          };
+          updateBloodRequest(newPlatelet);
         }
       });
     }
@@ -88,7 +137,18 @@ function BloodIssue({
           request.blood_component[0].rbc > 0 &&
           request._id === blood_request_id
         ) {
-          console.log('Found rbc');
+          const subtractedRBC = parseInt(request.blood_component[0].rbc) - 1;
+          const newRBC = {
+            _id: request._id,
+            blood_group: request.blood_group,
+            patient_id: request.patient_id,
+            patient_name: request.patient_name,
+            plasma: request.blood_component[0].plasma,
+            platelet: request.blood_component[0].platelet,
+            rbc: subtractedRBC,
+            wb: request.blood_component[0].wb,
+          };
+          updateBloodRequest(newRBC);
         }
       });
     }
@@ -100,7 +160,18 @@ function BloodIssue({
           request.blood_component[0].wb > 0 &&
           request._id === blood_request_id
         ) {
-          console.log('Found wb');
+          const subtractedWB = parseInt(request.blood_component[0].wb) - 1;
+          const newWB = {
+            _id: request._id,
+            blood_group: request.blood_group,
+            patient_id: request.patient_id,
+            patient_name: request.patient_name,
+            plasma: request.blood_component[0].plasma,
+            platelet: request.blood_component[0].platelet,
+            rbc: request.blood_component[0].rbc,
+            wb: subtractedWB,
+          };
+          updateBloodRequest(newWB);
         }
       });
     }
@@ -144,6 +215,7 @@ BloodIssue.propTypes = {
   addBloodIssue: PropTypes.func.isRequired,
   deleteBloodIssue: PropTypes.func.isRequired,
   updateBloodIssue: PropTypes.func.isRequired,
+  updateBloodRequest: PropTypes.func.isRequired,
   bloodIssues: PropTypes.object.isRequired,
   getBloodRequests: PropTypes.func.isRequired,
   bloodRequests: PropTypes.array.isRequired,
@@ -162,5 +234,6 @@ export default connect(mapStateToProps, {
   updateBloodIssue,
   deleteBloodIssue,
   getBloodRequests,
+  updateBloodRequest,
   getBloodStores,
 })(BloodIssue);
