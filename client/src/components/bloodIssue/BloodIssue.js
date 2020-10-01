@@ -7,13 +7,12 @@ import {
   getBloodIssues,
   addBloodIssue,
   deleteBloodIssue,
-  updateBloodIssue,
 } from '../../actions/bloodIssue';
 import {
   getBloodRequests,
   updateBloodRequest,
 } from '../../actions/bloodRequest';
-import { getBloodStores } from '../../actions/bloodStore';
+import { getBloodStores, updateBloodStore } from '../../actions/bloodStore';
 import Spinner from '../layout/Spinner';
 
 const initialValues = {
@@ -29,11 +28,11 @@ function BloodIssue({
   deleteBloodIssue,
   getBloodIssues,
   addBloodIssue,
-  updateBloodIssue,
   getBloodRequests,
   updateBloodRequest,
   bloodRequests,
   getBloodStores,
+  updateBloodStore,
   bloodStores,
   match,
 }) {
@@ -58,8 +57,8 @@ function BloodIssue({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // edit ? updateBloodIssue(values) : addBloodIssue(values);
-    console.log(values);
+
+    // console.log(values);
 
     if (values.plasma !== '' && values.platelet !== '') {
       return console.log('Please, select only one option at atime');
@@ -87,8 +86,6 @@ function BloodIssue({
           request.blood_component[0].plasma > 0 &&
           request._id === blood_request_id
         ) {
-          // console.log('Found plasma');
-          // console.log(request);
           const subtractedPlasma =
             parseInt(request.blood_component[0].plasma) - 1;
           const newPlasma = {
@@ -101,7 +98,27 @@ function BloodIssue({
             rbc: request.blood_component[0].rbc,
             wb: request.blood_component[0].wb,
           };
-          updateBloodRequest(newPlasma);
+
+          bloodStores &&
+            bloodStores.map((store) => {
+              if (store.bag === values.plasma) {
+                // console.log(store);
+                const newStore = {
+                  _id: store._id,
+                  bag: store.bag,
+                  blood_component: store.blood_component,
+                  blood_group: store.blood_group,
+                  donor: store.donor,
+                  hb: store.hb,
+                  status: 'Issued',
+                  unit: store.unit,
+                };
+                updateBloodRequest(newPlasma);
+                console.log(newStore);
+                updateBloodStore(newStore);
+                addBloodIssue(values);
+              }
+            });
         }
       });
     }
@@ -125,7 +142,25 @@ function BloodIssue({
             rbc: request.blood_component[0].rbc,
             wb: request.blood_component[0].wb,
           };
-          updateBloodRequest(newPlatelet);
+          bloodStores &&
+            bloodStores.map((store) => {
+              if (store.bag === values.platelet) {
+                const newStore = {
+                  _id: store._id,
+                  bag: store.bag,
+                  blood_component: store.blood_component,
+                  blood_group: store.blood_group,
+                  donor: store.donor,
+                  hb: store.hb,
+                  status: 'Issued',
+                  unit: store.unit,
+                };
+                updateBloodRequest(newPlatelet);
+                console.log(newStore);
+                updateBloodStore(newStore);
+                addBloodIssue(values);
+              }
+            });
         }
       });
     }
@@ -148,7 +183,25 @@ function BloodIssue({
             rbc: subtractedRBC,
             wb: request.blood_component[0].wb,
           };
-          updateBloodRequest(newRBC);
+          bloodStores &&
+            bloodStores.map((store) => {
+              if (store.bag === values.rbc) {
+                const newStore = {
+                  _id: store._id,
+                  bag: store.bag,
+                  blood_component: store.blood_component,
+                  blood_group: store.blood_group,
+                  donor: store.donor,
+                  hb: store.hb,
+                  status: 'Issued',
+                  unit: store.unit,
+                };
+                updateBloodRequest(newRBC);
+                console.log(newStore);
+                updateBloodStore(newStore);
+                addBloodIssue(values);
+              }
+            });
         }
       });
     }
@@ -171,7 +224,25 @@ function BloodIssue({
             rbc: request.blood_component[0].rbc,
             wb: subtractedWB,
           };
-          updateBloodRequest(newWB);
+          bloodStores &&
+            bloodStores.map((store) => {
+              if (store.bag === values.wb) {
+                const newStore = {
+                  _id: store._id,
+                  bag: store.bag,
+                  blood_component: store.blood_component,
+                  blood_group: store.blood_group,
+                  donor: store.donor,
+                  hb: store.hb,
+                  status: 'Issued',
+                  unit: store.unit,
+                };
+                updateBloodRequest(newWB);
+                console.log(newStore);
+                updateBloodStore(newStore);
+                addBloodIssue(values);
+              }
+            });
         }
       });
     }
@@ -214,8 +285,8 @@ BloodIssue.propTypes = {
   getBloodIssues: PropTypes.func.isRequired,
   addBloodIssue: PropTypes.func.isRequired,
   deleteBloodIssue: PropTypes.func.isRequired,
-  updateBloodIssue: PropTypes.func.isRequired,
   updateBloodRequest: PropTypes.func.isRequired,
+  updateBloodStore: PropTypes.func.isRequired,
   bloodIssues: PropTypes.object.isRequired,
   getBloodRequests: PropTypes.func.isRequired,
   bloodRequests: PropTypes.array.isRequired,
@@ -231,9 +302,9 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   getBloodIssues,
   addBloodIssue,
-  updateBloodIssue,
   deleteBloodIssue,
   getBloodRequests,
   updateBloodRequest,
   getBloodStores,
+  updateBloodStore,
 })(BloodIssue);

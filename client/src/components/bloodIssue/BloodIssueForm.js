@@ -85,7 +85,10 @@ function BloodIssueForm({
                   </option>
                   {bloodStores &&
                     bloodStores.map((store) => {
-                      if (store.blood_component === 'Plasma') {
+                      if (
+                        store.blood_component === 'Plasma' &&
+                        store.status === 'Stock'
+                      ) {
                         return (
                           <option key={store._id} value={store.bag}>
                             {store.bag}
@@ -121,7 +124,10 @@ function BloodIssueForm({
                   </option>
                   {bloodStores &&
                     bloodStores.map((store) => {
-                      if (store.blood_component === 'Platelet') {
+                      if (
+                        store.blood_component === 'Platelet' &&
+                        store.status === 'Stock'
+                      ) {
                         return (
                           <option key={store._id} value={store.bag}>
                             {store.bag}
@@ -157,7 +163,10 @@ function BloodIssueForm({
                   </option>
                   {bloodStores &&
                     bloodStores.map((store) => {
-                      if (store.blood_component === 'RBC') {
+                      if (
+                        store.blood_component === 'RBC' &&
+                        store.status === 'Stock'
+                      ) {
                         return (
                           <option key={store._id} value={store.bag}>
                             {store.bag}
@@ -193,7 +202,10 @@ function BloodIssueForm({
                   </option>
                   {bloodStores &&
                     bloodStores.map((store) => {
-                      if (store.blood_component === 'Whole Blood') {
+                      if (
+                        store.blood_component === 'Whole Blood' &&
+                        store.status === 'Stock'
+                      ) {
                         return (
                           <option key={store._id} value={store.bag}>
                             {store.bag}

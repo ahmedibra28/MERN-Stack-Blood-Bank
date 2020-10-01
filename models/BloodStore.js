@@ -31,7 +31,6 @@ const BloodStoreSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    default: 'Stock',
   },
   date: {
     type: Date,

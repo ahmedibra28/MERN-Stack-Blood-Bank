@@ -17,6 +17,7 @@ const initialValues = {
   blood_component: '',
   blood_group: '',
   unit: '',
+  status: 'Stock',
   bag: '',
 };
 

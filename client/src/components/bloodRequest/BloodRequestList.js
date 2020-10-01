@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import Moment from 'react-moment';
 import moment from 'moment';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import SendIcon from '@material-ui/icons/Send';
 import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
 
@@ -71,10 +72,9 @@ const BloodRequestList = ({
                       </button>{' '}
                       <Link
                         to={`/blood-issue/${request._id}`}
-                        // onClick={() => deleteBloodRequest(request._id)}
-                        className='btn btn-outline-danger btn-sm'
+                        className='btn btn-outline-info btn-sm'
                       >
-                        S
+                        <SendIcon />
                       </Link>
                     </td>
                   </tr>

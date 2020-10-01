@@ -50,6 +50,7 @@ router.post(
     const blood_group = req.body.blood_group;
     const blood_component = req.body.blood_component;
     const unit = req.body.unit;
+    const status = 'Stock';
     const bag = req.body.bag.toUpperCase();
 
     try {
@@ -60,6 +61,7 @@ router.post(
         blood_group,
         blood_component,
         unit,
+        status,
         bag,
       };
 
@@ -107,6 +109,7 @@ router.put(
     const blood_group = req.body.blood_group;
     const blood_component = req.body.blood_component;
     const unit = req.body.unit;
+    const status = req.body.status;
     const bag = req.body.bag.toUpperCase();
 
     try {
@@ -117,6 +120,7 @@ router.put(
         blood_group,
         blood_component,
         unit,
+        status,
         bag,
       };
 
