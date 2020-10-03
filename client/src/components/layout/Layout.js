@@ -64,12 +64,12 @@ const Navbar = ({
 
   const guestLinks = (
     <ul className="navbar-nav mr-right mb-2 mb-lg-0">
-      <li className="nav-item">
+      {/* <li className="nav-item">
         <Link to="/register" className="nav-link">
           <PersonAddIcon fontSize="small" />
           Singup
         </Link>
-      </li>
+      </li> */}
       <li className="nav-item">
         <Link to="/login" onClick={logout} className="nav-link">
           <ExitToAppIcon fontSize="small" />

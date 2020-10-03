@@ -22,7 +22,7 @@
     "uuid": "^8.3.0"
   },
   "scripts": {
-    "start": "set PORT=1122 && react-scripts start",
+    "start": "set PORT=80 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -42,5 +42,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:5001"
 }

@@ -1,0 +1,68 @@
+db.blood_requests.insertMany([
+  {
+    "patient_id": "99744",
+    "patient_name": "halimo warsame mohamud",
+    "blood_group": "A+",
+    "blood_component": {
+      "plasma": "",
+      "platelet": "",
+      "rbc": "",
+      "wb": "1"
+    }
+  },
+  {
+    "patient_id": "P111534",
+    "patient_name": "maryan jamac hersi",
+    "blood_group": "A+",
+    "blood_component": {
+      "plasma": "1",
+      "platelet": "",
+      "rbc": "",
+      "wb": ""
+    }
+  },
+  {
+    "patient_id": "108703",
+    "patient_name": "fadumo mohamed ibrahim",
+    "blood_group": "A+",
+    "blood_component": {
+      "plasma": "",
+      "platelet": "",
+      "rbc": "1",
+      "wb": ""
+    }
+  },
+  {
+    "patient_id": "112393",
+    "patient_name": "dahabo moalin ahmed",
+    "blood_group": "O+",
+    "blood_component": {
+      "plasma": "",
+      "platelet": "1",
+      "rbc": "",
+      "wb": ""
+    }
+  },
+  {
+    "patient_id": "P111665",
+    "patient_name": "ASHO  hussein",
+    "blood_group": "B+",
+    "blood_component": {
+      "plasma": "",
+      "platelet": "",
+      "rbc": "",
+      "wb": "1"
+    }
+  },
+  {
+    "patient_id": "P112815",
+    "patient_name": "Batuulo sangab moahamud",
+    "blood_group": "AB+",
+    "blood_component": {
+      "plasma": "3",
+      "platelet": "",
+      "rbc": "",
+      "wb": "1"
+    }
+  }
+])
