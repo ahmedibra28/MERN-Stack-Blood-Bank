@@ -4,7 +4,12 @@ import moment from "moment";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import EditIcon from "@material-ui/icons/Edit";
 
-const BloodIssueList = ({ handleUpdate, bloodIssues, deleteBloodIssue }) => {
+const BloodIssueList = ({
+  handleUpdate,
+  bloodIssues,
+  deleteBloodIssue,
+  user,
+}) => {
   return (
     <div>
       <h3 className="text-center form-title mb-4">Blood Issue List</h3>
@@ -23,6 +28,7 @@ const BloodIssueList = ({ handleUpdate, bloodIssues, deleteBloodIssue }) => {
               <th>Platelet</th>
               <th>rbc</th>
               <th>wb</th>
+              <th>Action</th>
               {/* <th>Action</th> */}
             </tr>
           </thead>
@@ -46,20 +52,22 @@ const BloodIssueList = ({ handleUpdate, bloodIssues, deleteBloodIssue }) => {
                     <td>{issue.blood_component.rbc}</td>
                     <td>{issue.blood_component.wb}</td>
 
-                    {/* <td>
-                      <button
+                    {user && user.role === "Admin" && (
+                      <td>
+                        {/* <button
                         onClick={() => handleUpdate(issue)}
                         className='btn btn-outline-info btn-sm'
                       >
                         <EditIcon fontSize='small' />
-                      </button>{' '}
-                      <button
-                        onClick={() => deleteBloodIssue(issue._id)}
-                        className='btn btn-outline-danger btn-sm'
-                      >
-                        <DeleteForeverIcon fontSize='small' />
-                      </button>
-                    </td> */}
+                      </button>{' '} */}
+                        <button
+                          onClick={() => deleteBloodIssue(issue._id)}
+                          className="btn btn-outline-danger btn-sm"
+                        >
+                          <DeleteForeverIcon fontSize="small" />
+                        </button>
+                      </td>
+                    )}
                   </tr>
                 );
               })}

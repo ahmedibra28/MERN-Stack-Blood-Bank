@@ -35,6 +35,7 @@ function BloodIssue({
   updateBloodStore,
   bloodStores,
   match,
+  auth: { user },
 }) {
   const [values, setValues] = useState(initialValues);
   const [edit, setEdit] = useState(false);
@@ -274,6 +275,7 @@ function BloodIssue({
           handleUpdate={handleUpdate}
           deleteBloodIssue={deleteBloodIssue}
           bloodIssues={bloodIssues}
+          user={user}
         />
       </div>
     </div>
@@ -290,12 +292,14 @@ BloodIssue.propTypes = {
   getBloodRequests: PropTypes.func.isRequired,
   bloodRequests: PropTypes.array.isRequired,
   bloodStores: PropTypes.array.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   bloodIssues: state.bloodIssue,
   bloodRequests: state.bloodRequest.bloodRequests,
   bloodStores: state.bloodStore.bloodStores,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, {

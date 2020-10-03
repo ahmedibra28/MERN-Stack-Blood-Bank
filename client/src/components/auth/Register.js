@@ -130,9 +130,9 @@ const Register = ({ setAlert, register, isAuthenticated, history }) => {
               </div>
             </div>
             <div className="col-lg-7 col-sm-12 mx-auto mb-3">
-              <div className="form-group light">
+              {/* <div className="form-group light">
                 Already have an account? <Link to="/login">login</Link>
-              </div>
+              </div> */}
               <div className="input-group mx-auto d-block text-right">
                 <button
                   type="submit"
