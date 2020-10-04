@@ -10,6 +10,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  CHANGE_PASSWORD,
+  CHANGE_PASSWORD_FAIL,
 } from "./types";
 
 // Load user
@@ -59,6 +61,40 @@ export const register = ({ name, email, password, role, history }) => async (
     }
     dispatch({
       type: REGISTER_FAIL,
+    });
+  }
+};
+
+// Change password
+export const changePassword = (formData, history) => async (dispatch) => {
+  try {
+    const config = {
+      headers: { "Content-Type": "application/json" },
+    };
+
+    const res = await axios.put(
+      `/api/users/change-password/`,
+      formData,
+      config
+    );
+
+    dispatch({
+      type: CHANGE_PASSWORD,
+      payload: res.data,
+    });
+
+    dispatch(setAlert("Successfully Password Updated", "success"));
+
+    history.push("/");
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+
+    dispatch({
+      type: CHANGE_PASSWORD_FAIL,
+      payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
 };
