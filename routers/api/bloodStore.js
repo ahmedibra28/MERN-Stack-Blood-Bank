@@ -8,7 +8,7 @@ const BloodStore = require("../../models/BloodStore");
 // @route    GET api/blood-store
 // @desc     Get all blood store
 // @access   Private
-router.get("/", auth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const bloodStore = await BloodStore.find().sort({ date: -1 });
     res.json(bloodStore);
