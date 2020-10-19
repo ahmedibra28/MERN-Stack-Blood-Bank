@@ -58,7 +58,7 @@ const App = () => {
             <Route path="/login" component={Login} />
             <AdminPrivateRoute path="/register" component={Register} />
             <PrivateRoute path="/change-password" component={ChangePassword} />
-            <PrivateRoute exact path="/" component={Dashboard} />
+            <Route exact path="/" component={Dashboard} />
             <PrivateRoute
               exact
               path="/blood-request"
