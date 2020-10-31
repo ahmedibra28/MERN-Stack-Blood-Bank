@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { getBloodStores } from "../../actions/bloodStore";
-import Spinner from "../layout/Spinner";
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getBloodStores } from '../../actions/bloodStore';
+import Spinner from '../layout/Spinner';
 
 const Dashboard = ({
   bloodStores: { loading, bloodStores },
@@ -23,434 +23,434 @@ const Dashboard = ({
   return loading ? (
     <Spinner />
   ) : (
-    <div className="">
-      <div className="row mt-3">
-        <h3 className="text-center summary">CURRENT SUMMARY BLOOD STORE</h3>
-        <div className="col-md-3">
-          <div className="card text-center">
-            <div className="card-header">Plasma</div>
-            <div className="card-body text-left">
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">
-                  <strong>A Positive:</strong>{" "}
+    <div className=''>
+      <div className='row mt-3'>
+        <h3 className='text-center summary'>CURRENT SUMMARY BLOOD STORE</h3>
+        <div className='col-md-3'>
+          <div className='card text-center'>
+            <div className='card-header'>Plasma</div>
+            <div className='card-body text-left'>
+              <ul className='list-group list-group-flush'>
+                <li className='list-group-item'>
+                  <strong>A + </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Plasma",
-                        blood_group: "A+",
+                        status: 'Stock',
+                        blood_component: 'Plasma',
+                        blood_group: 'A+',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>B Positive:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>B + </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Plasma",
-                        blood_group: "B+",
+                        status: 'Stock',
+                        blood_component: 'Plasma',
+                        blood_group: 'B+',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>AB Positive:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>AB + </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Plasma",
-                        blood_group: "AB+",
+                        status: 'Stock',
+                        blood_component: 'Plasma',
+                        blood_group: 'AB+',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>O Positive:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>O + </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Plasma",
-                        blood_group: "O+",
+                        status: 'Stock',
+                        blood_component: 'Plasma',
+                        blood_group: 'O+',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>A Negative:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>A - </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Plasma",
-                        blood_group: "A-",
+                        status: 'Stock',
+                        blood_component: 'Plasma',
+                        blood_group: 'A-',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>B Negative:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>B - </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Plasma",
-                        blood_group: "B-",
+                        status: 'Stock',
+                        blood_component: 'Plasma',
+                        blood_group: 'B-',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>AB Negative:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>AB - </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Plasma",
-                        blood_group: "AB-",
+                        status: 'Stock',
+                        blood_component: 'Plasma',
+                        blood_group: 'AB-',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>O Negative:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>O - </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Plasma",
-                        blood_group: "O-",
+                        status: 'Stock',
+                        blood_component: 'Plasma',
+                        blood_group: 'O-',
                       }).length
                     }
                   </strong>
                 </li>
               </ul>
             </div>
-            <div className="card-footer text-muted">Today</div>
+            <div className='card-footer text-muted'>Today</div>
           </div>
         </div>
 
-        <div className="col-md-3">
-          <div className="card text-center">
-            <div className="card-header">Platelet</div>
-            <div className="card-body text-left">
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">
-                  <strong>A Positive:</strong>{" "}
+        <div className='col-md-3'>
+          <div className='card text-center'>
+            <div className='card-header'>Platelet</div>
+            <div className='card-body text-left'>
+              <ul className='list-group list-group-flush'>
+                <li className='list-group-item'>
+                  <strong>A + </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Platelet",
-                        blood_group: "A+",
+                        status: 'Stock',
+                        blood_component: 'Platelet',
+                        blood_group: 'A+',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>B Positive:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>B + </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Platelet",
-                        blood_group: "B+",
+                        status: 'Stock',
+                        blood_component: 'Platelet',
+                        blood_group: 'B+',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>AB Positive:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>AB + </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Platelet",
-                        blood_group: "AB+",
+                        status: 'Stock',
+                        blood_component: 'Platelet',
+                        blood_group: 'AB+',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>O Positive:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>O + </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Platelet",
-                        blood_group: "O+",
+                        status: 'Stock',
+                        blood_component: 'Platelet',
+                        blood_group: 'O+',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>A Negative:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>A - </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Platelet",
-                        blood_group: "A-",
+                        status: 'Stock',
+                        blood_component: 'Platelet',
+                        blood_group: 'A-',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>B Negative:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>B - </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Platelet",
-                        blood_group: "B-",
+                        status: 'Stock',
+                        blood_component: 'Platelet',
+                        blood_group: 'B-',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>AB Negative:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>AB - </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Platelet",
-                        blood_group: "AB-",
+                        status: 'Stock',
+                        blood_component: 'Platelet',
+                        blood_group: 'AB-',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>O Negative:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>O - </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Platelet",
-                        blood_group: "O-",
+                        status: 'Stock',
+                        blood_component: 'Platelet',
+                        blood_group: 'O-',
                       }).length
                     }
                   </strong>
                 </li>
               </ul>
             </div>
-            <div className="card-footer text-muted">Today</div>
+            <div className='card-footer text-muted'>Today</div>
           </div>
         </div>
 
-        <div className="col-md-3">
-          <div className="card text-center">
-            <div className="card-header">RBC</div>
-            <div className="card-body text-left">
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">
-                  <strong>A Positive:</strong>{" "}
+        <div className='col-md-3'>
+          <div className='card text-center'>
+            <div className='card-header'>RBC</div>
+            <div className='card-body text-left'>
+              <ul className='list-group list-group-flush'>
+                <li className='list-group-item'>
+                  <strong>A + </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "RBC",
-                        blood_group: "A+",
+                        status: 'Stock',
+                        blood_component: 'RBC',
+                        blood_group: 'A+',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>B Positive:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>B + </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "RBC",
-                        blood_group: "B+",
+                        status: 'Stock',
+                        blood_component: 'RBC',
+                        blood_group: 'B+',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>AB Positive:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>AB + </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "RBC",
-                        blood_group: "AB+",
+                        status: 'Stock',
+                        blood_component: 'RBC',
+                        blood_group: 'AB+',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>O Positive:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>O + </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "RBC",
-                        blood_group: "O+",
+                        status: 'Stock',
+                        blood_component: 'RBC',
+                        blood_group: 'O+',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>A Negative:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>A - </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "RBC",
-                        blood_group: "A-",
+                        status: 'Stock',
+                        blood_component: 'RBC',
+                        blood_group: 'A-',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>B Negative:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>B - </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "RBC",
-                        blood_group: "B-",
+                        status: 'Stock',
+                        blood_component: 'RBC',
+                        blood_group: 'B-',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>AB Negative:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>AB - </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "RBC",
-                        blood_group: "AB-",
+                        status: 'Stock',
+                        blood_component: 'RBC',
+                        blood_group: 'AB-',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>O Negative:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>O - </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "RBC",
-                        blood_group: "O-",
+                        status: 'Stock',
+                        blood_component: 'RBC',
+                        blood_group: 'O-',
                       }).length
                     }
                   </strong>
                 </li>
               </ul>
             </div>
-            <div className="card-footer text-muted">Today</div>
+            <div className='card-footer text-muted'>Today</div>
           </div>
         </div>
 
-        <div className="col-md-3">
-          <div className="card text-center">
-            <div className="card-header">Whole Blood</div>
-            <div className="card-body text-left">
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">
-                  <strong>A Positive:</strong>{" "}
+        <div className='col-md-3'>
+          <div className='card text-center'>
+            <div className='card-header'>Whole Blood</div>
+            <div className='card-body text-left'>
+              <ul className='list-group list-group-flush'>
+                <li className='list-group-item'>
+                  <strong>A + </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Whole Blood",
-                        blood_group: "A+",
+                        status: 'Stock',
+                        blood_component: 'Whole Blood',
+                        blood_group: 'A+',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>B Positive:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>B + </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Whole Blood",
-                        blood_group: "B+",
+                        status: 'Stock',
+                        blood_component: 'Whole Blood',
+                        blood_group: 'B+',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>AB Positive:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>AB + </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Whole Blood",
-                        blood_group: "AB+",
+                        status: 'Stock',
+                        blood_component: 'Whole Blood',
+                        blood_group: 'AB+',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>O Positive:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>O + </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Whole Blood",
-                        blood_group: "O+",
+                        status: 'Stock',
+                        blood_component: 'Whole Blood',
+                        blood_group: 'O+',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>A Negative:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>A - </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Whole Blood",
-                        blood_group: "A-",
+                        status: 'Stock',
+                        blood_component: 'Whole Blood',
+                        blood_group: 'A-',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>B Negative:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>B - </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Whole Blood",
-                        blood_group: "B-",
+                        status: 'Stock',
+                        blood_component: 'Whole Blood',
+                        blood_group: 'B-',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>AB Negative:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>AB - </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Whole Blood",
-                        blood_group: "AB-",
+                        status: 'Stock',
+                        blood_component: 'Whole Blood',
+                        blood_group: 'AB-',
                       }).length
                     }
                   </strong>
                 </li>
-                <li className="list-group-item">
-                  <strong>O Negative:</strong>{" "}
+                <li className='list-group-item'>
+                  <strong>O - </strong>{' '}
                   <strong>
                     {
                       filteredBloodStore({
-                        status: "Stock",
-                        blood_component: "Whole Blood",
-                        blood_group: "O-",
+                        status: 'Stock',
+                        blood_component: 'Whole Blood',
+                        blood_group: 'O-',
                       }).length
                     }
                   </strong>
                 </li>
               </ul>
             </div>
-            <div className="card-footer text-muted">Today</div>
+            <div className='card-footer text-muted'>Today</div>
           </div>
         </div>
       </div>
