@@ -1,8 +1,7 @@
-import React, { Fragment } from "react";
-import Moment from "react-moment";
-import moment from "moment";
-import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
-import EditIcon from "@material-ui/icons/Edit";
+import React from 'react';
+import Moment from 'react-moment';
+import moment from 'moment';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 const BloodIssueList = ({
   handleUpdate,
@@ -12,10 +11,10 @@ const BloodIssueList = ({
 }) => {
   return (
     <div>
-      <h3 className="text-center form-title mb-4">Blood Issue List</h3>
+      <h3 className='text-center form-title mb-4'>Blood Issue List</h3>
       <hr />
-      <div className="table-responsive">
-        <table className="table table-sm table-hover table-bordered caption-top">
+      <div className='table-responsive'>
+        <table className='table table-sm table-hover table-bordered caption-top'>
           <caption>
             {bloodIssues && bloodIssues.length} records were found
           </caption>
@@ -38,10 +37,10 @@ const BloodIssueList = ({
                 return (
                   <tr
                     key={issue._id}
-                    id={issue._id % 2 === 0 ? "orange" : "green"}
+                    id={issue._id % 2 === 0 ? 'orange' : 'green'}
                   >
                     <td>
-                      <Moment format="YYYY-MM-DD HH:mm:ss">
+                      <Moment format='YYYY-MM-DD HH:mm:ss'>
                         {moment(issue.date)}
                       </Moment>
                     </td>
@@ -52,7 +51,7 @@ const BloodIssueList = ({
                     <td>{issue.blood_component.rbc}</td>
                     <td>{issue.blood_component.wb}</td>
 
-                    {user && user.role === "Admin" && (
+                    {user && user.role === 'Admin' && (
                       <td>
                         {/* <button
                         onClick={() => handleUpdate(issue)}
@@ -62,9 +61,9 @@ const BloodIssueList = ({
                       </button>{' '} */}
                         <button
                           onClick={() => deleteBloodIssue(issue._id)}
-                          className="btn btn-outline-danger btn-sm"
+                          className='btn btn-outline-danger btn-sm'
                         >
-                          <DeleteForeverIcon fontSize="small" />
+                          <DeleteForeverIcon fontSize='small' />
                         </button>
                       </td>
                     )}

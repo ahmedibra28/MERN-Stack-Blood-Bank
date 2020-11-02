@@ -26,10 +26,10 @@ const Dashboard = ({
     <div className=''>
       <div className='row mt-3'>
         <h3 className='text-center summary'>CURRENT SUMMARY BLOOD STORE</h3>
-        <div className='col-md-3'>
+        <div className='col-lg-3 col-md-6 col-sm-6 col-12'>
           <div className='card text-center'>
             <div className='card-header'>Plasma</div>
-            <div className='card-body text-left'>
+            <div className='card-body '>
               <ul className='list-group list-group-flush'>
                 <li className='list-group-item'>
                   <strong>A + </strong>{' '}
@@ -133,7 +133,7 @@ const Dashboard = ({
           </div>
         </div>
 
-        <div className='col-md-3'>
+        <div className='col-lg-3 col-md-6 col-sm-6 col-12'>
           <div className='card text-center'>
             <div className='card-header'>Platelet</div>
             <div className='card-body text-left'>
@@ -240,7 +240,7 @@ const Dashboard = ({
           </div>
         </div>
 
-        <div className='col-md-3'>
+        <div className='col-lg-3 col-md-6 col-sm-6 col-12'>
           <div className='card text-center'>
             <div className='card-header'>RBC</div>
             <div className='card-body text-left'>
@@ -347,7 +347,7 @@ const Dashboard = ({
           </div>
         </div>
 
-        <div className='col-md-3'>
+        <div className='col-lg-3 col-md-6 col-sm-6 col-12'>
           <div className='card text-center'>
             <div className='card-header'>Whole Blood</div>
             <div className='card-body text-left'>

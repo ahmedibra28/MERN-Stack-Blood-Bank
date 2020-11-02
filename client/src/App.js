@@ -1,41 +1,24 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import './App.css';
 
-import Login from './components/auth/Login';
-import ChangePassword from './components/auth/ChangePassword';
-import Register from './components/auth/Register';
-import Alert from './components/layout/Alert';
-import Dashboard from './components/dashboard/Dashboard';
 import Layout from './components/layout/Layout';
-import BloodRequest from './components/bloodRequest/BloodRequest';
-import BloodStore from './components/bloodStore/BloodStore';
-import BloodIssue from './components/bloodIssue/BloodIssue';
 
 import { loadUser } from './actions/auth';
 import { LOGOUT } from './actions/types';
 import setAuthToken from './utils/setAuthToken';
-import PrivateRoute from './components/routes/PrivateRoute';
-import AdminPrivateRoute from './components/routes/AdminPrivateRoute';
 
 // Redux
 import { Provider } from 'react-redux';
 import { store } from './store';
+import Routes from './components/routes/Routes.js';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
 
-const NoMatch = ({ location }) => (
-  <div>
-    <h3>
-      {' '}
-      No match for <code>{location.pathname}</code>{' '}
-    </h3>
-  </div>
-);
 const App = () => {
   useEffect(() => {
     // check for token in LS
@@ -55,23 +38,7 @@ const App = () => {
       <Router>
         <Switch>
           <Layout>
-            <Alert />
-            <Route path='/login' component={Login} />
-            <AdminPrivateRoute path='/register' component={Register} />
-            <PrivateRoute path='/change-password' component={ChangePassword} />
-            <Route exact path='/' component={Dashboard} />
-            <PrivateRoute
-              exact
-              path='/blood-request'
-              component={BloodRequest}
-            />
-            <PrivateRoute exact path='/blood-store' component={BloodStore} />
-            <PrivateRoute
-              exact
-              path='/blood-issue/:id'
-              component={BloodIssue}
-            />
-            {/* <Route component={NoMatch} /> */}
+            <Route component={Routes} />
           </Layout>
         </Switch>
       </Router>

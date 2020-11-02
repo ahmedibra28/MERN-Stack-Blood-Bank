@@ -1,10 +1,10 @@
-import React, { Fragment } from "react";
-import Moment from "react-moment";
-import moment from "moment";
-import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
-import SendIcon from "@material-ui/icons/Send";
-import EditIcon from "@material-ui/icons/Edit";
-import { Link } from "react-router-dom";
+import React from 'react';
+import Moment from 'react-moment';
+import moment from 'moment';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import SendIcon from '@material-ui/icons/Send';
+import EditIcon from '@material-ui/icons/Edit';
+import { Link } from 'react-router-dom';
 
 const BloodRequestList = ({
   handleUpdate,
@@ -22,10 +22,10 @@ const BloodRequestList = ({
   });
   return (
     <div>
-      <h3 className="text-center form-title mb-4">Blood Request List</h3>
+      <h3 className='text-center form-title mb-4'>Blood Request List</h3>
       <hr />
-      <div className="table-responsive">
-        <table className="table table-sm table-hover table-bordered caption-top">
+      <div className='table-responsive'>
+        <table className='table table-sm table-hover table-bordered caption-top'>
           <caption>
             {/* {bloodRequests && bloodRequests.length} records were found */}
             {filter.length} - Pending Request Order
@@ -56,10 +56,10 @@ const BloodRequestList = ({
                     return (
                       <tr
                         key={request._id}
-                        id={request._id % 2 === 0 ? "orange" : "green"}
+                        id={request._id % 2 === 0 ? 'orange' : 'green'}
                       >
                         <td>
-                          <Moment format="YYYY-MM-DD HH:mm:ss">
+                          <Moment format='YYYY-MM-DD HH:mm:ss'>
                             {moment(request.date)}
                           </Moment>
                         </td>
@@ -74,21 +74,21 @@ const BloodRequestList = ({
                         <td>
                           <button
                             onClick={() => handleUpdate(request)}
-                            className="btn btn-outline-info btn-sm"
+                            className='btn btn-outline-info btn-sm'
                           >
-                            <EditIcon fontSize="small" />
-                          </button>{" "}
-                          {user && user.role === "Admin" && (
+                            <EditIcon fontSize='small' />
+                          </button>{' '}
+                          {user && user.role === 'Admin' && (
                             <button
                               onClick={() => deleteBloodRequest(request._id)}
-                              className="btn btn-outline-danger btn-sm"
+                              className='btn btn-outline-danger btn-sm'
                             >
-                              <DeleteForeverIcon fontSize="small" />
+                              <DeleteForeverIcon fontSize='small' />
                             </button>
-                          )}{" "}
+                          )}{' '}
                           <Link
                             to={`/blood-issue/${request._id}`}
-                            className="btn btn-outline-info btn-sm"
+                            className='btn btn-outline-info btn-sm'
                           >
                             <SendIcon />
                           </Link>

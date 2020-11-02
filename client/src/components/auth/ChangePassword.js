@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import { setAlert } from "../../actions/alert";
-import { register, changePassword } from "../../actions/auth";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alert';
+import { register, changePassword } from '../../actions/auth';
+import PropTypes from 'prop-types';
 
 // Material UI Icons
-import VpnKeyIcon from "@material-ui/icons/VpnKey";
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
 
 const ChangePassword = ({ setAlert, changePassword, history }) => {
   const [formData, setFormData] = useState({
-    password: "",
-    password2: "",
+    password: '',
+    password2: '',
   });
 
   const { password, password2 } = formData;
@@ -21,7 +21,7 @@ const ChangePassword = ({ setAlert, changePassword, history }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      setAlert("Password confirmation does not match password", "danger", 5000);
+      setAlert('Password confirmation does not match password', 'danger', 5000);
     } else {
       changePassword(formData, history);
       // console.log(formData);
@@ -30,47 +30,47 @@ const ChangePassword = ({ setAlert, changePassword, history }) => {
 
   return (
     <div>
-      <div className="container__body">
+      <div className='container'>
         <form onSubmit={(e) => onSubmit(e)}>
-          <div className="row">
-            <h3 className="text-center form-title mb-4">Change Password</h3>
+          <div className='row'>
+            <h3 className='text-center form-title mb-4'>Change Password</h3>
 
-            <div className="col-lg-7 col-sm-12 mx-auto mb-3">
-              <div className="input-group shadow">
-                <span className="input-group-text" id="basic-addon1">
-                  <VpnKeyIcon />
+            <div className='col-lg-7 col-sm-12 mx-auto mb-2'>
+              <div className='input-group shadow'>
+                <span className='input-group-text' id='basic-addon1'>
+                  <VpnKeyIcon fontSize='small' />
                 </span>
                 <input
-                  name="password"
+                  name='password'
                   value={password}
                   onChange={(e) => onChange(e)}
-                  type="password"
-                  className="form-control py-2"
-                  placeholder="Enter password"
+                  type='password'
+                  className='form-control '
+                  placeholder='Enter password'
                 />
               </div>
             </div>
 
-            <div className="col-lg-7 col-sm-12 mx-auto mb-3">
-              <div className="input-group shadow">
-                <span className="input-group-text" id="basic-addon1">
-                  <VpnKeyIcon />
+            <div className='col-lg-7 col-sm-12 mx-auto mb-2'>
+              <div className='input-group shadow'>
+                <span className='input-group-text' id='basic-addon1'>
+                  <VpnKeyIcon fontSize='small' />
                 </span>
                 <input
-                  name="password2"
+                  name='password2'
                   value={password2}
                   onChange={(e) => onChange(e)}
-                  type="password"
-                  className="form-control py-2"
-                  placeholder="Confirm new password"
+                  type='password'
+                  className='form-control '
+                  placeholder='Confirm new password'
                 />
               </div>
             </div>
-            <div className="col-lg-7 col-sm-12 mx-auto mb-3">
-              <div className="input-group mx-auto d-block text-right">
+            <div className='col-lg-7 col-sm-12 mx-auto mb-2'>
+              <div className='input-group mx-auto d-block text-right'>
                 <button
-                  type="submit"
-                  className="btn-submit btn btn-primary shadow p-2 px-4"
+                  type='submit'
+                  className='btn-submit btn btn-primary shadow p-2 px-4'
                 >
                   Change
                 </button>

@@ -1,2 +1,4 @@
+# dependencies
 node_modules
-backup
+node_modules/
+/backup

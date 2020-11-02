@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
-import BloodStoreForm from "./BloodStoreForm";
-import BloodStoreList from "./BloodStoreList";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import BloodStoreForm from './BloodStoreForm';
+import BloodStoreList from './BloodStoreList';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import {
   getBloodStores,
   addBloodStore,
   deleteBloodStore,
   updateBloodStore,
-} from "../../actions/bloodStore";
-import Spinner from "../layout/Spinner";
+} from '../../actions/bloodStore';
+import Spinner from '../layout/Spinner';
 
 const initialValues = {
-  donor: "",
-  hb: "",
-  blood_component: "",
-  blood_group: "",
-  unit: "",
-  status: "Stock",
-  bag: "",
+  donor: '',
+  hb: '',
+  blood_component: '',
+  blood_group: '',
+  unit: '',
+  status: 'Stock',
+  bag: '',
 };
 
 function BloodStore({
@@ -61,15 +61,15 @@ function BloodStore({
   return loading ? (
     <Spinner />
   ) : (
-    <div className="row pt-4">
-      <div className="col-md-4">
+    <div className='row pt-4'>
+      <div className='col-md-4'>
         <BloodStoreForm
           handleSubmit={handleSubmit}
           handleChange={handleChange}
           values={values}
         />
       </div>
-      <div className="col-md-8">
+      <div className='col-md-8'>
         <BloodStoreList
           handleUpdate={handleUpdate}
           deleteBloodStore={deleteBloodStore}
