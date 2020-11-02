@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
+import './bootstrap.min.css';
 import './App.css';
-import './Main.css';
-import './Bootstrap.min.css';
 
 import Layout from './components/layout/Layout';
 
