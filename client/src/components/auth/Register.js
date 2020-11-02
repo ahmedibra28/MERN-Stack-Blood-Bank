@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
@@ -11,7 +10,7 @@ import EmailIcon from '@material-ui/icons/Email';
 import FaceIcon from '@material-ui/icons/Face';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 
-const Register = ({ setAlert, register, history }) => {
+const Register = ({ setAlert, register, isAuthenticated, history }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -34,14 +33,19 @@ const Register = ({ setAlert, register, history }) => {
     }
   };
 
+  // Redirect if logged in
+  // if (isAuthenticated) {
+  //   return <Redirect to="/dashboard" />;
+  // }
+
   return (
     <div>
       <div className='container'>
         <form onSubmit={(e) => onSubmit(e)}>
-          <div className='row'>
-            <h3 className='text-center form-title mb-4'>Signup</h3>
+          <div className='row d-block'>
+            <h3 className='text-muted my-3 text-center'>SIGNUP</h3>
 
-            <div className='col-lg-7 col-sm-12 mx-auto mb-2'>
+            <div className='col-lg-5 col-md-6 col-sm-10 col-12 mx-auto mb-2'>
               <div className='input-group '>
                 <span className='input-group-text' id='basic-addon1'>
                   <FaceIcon fontSize='small' />
@@ -51,13 +55,12 @@ const Register = ({ setAlert, register, history }) => {
                   value={name}
                   onChange={(e) => onChange(e)}
                   type='text'
-                  className='form-control '
+                  className='form-control py-2 shadow-none'
                   placeholder='Enter name'
                 />
               </div>
             </div>
-
-            <div className='col-lg-7 col-sm-12 mx-auto mb-2'>
+            <div className='col-lg-5 col-md-6 col-sm-10 col-12 mx-auto mb-2'>
               <div className='input-group '>
                 <span className='input-group-text' id='basic-addon1'>
                   <EmailIcon fontSize='small' />
@@ -67,13 +70,12 @@ const Register = ({ setAlert, register, history }) => {
                   value={email}
                   onChange={(e) => onChange(e)}
                   type='email'
-                  className='form-control '
+                  className='form-control py-2 shadow-none'
                   placeholder='Enter email'
                 />
               </div>
             </div>
-
-            <div className='col-lg-7 col-sm-12 mx-auto mb-2'>
+            <div className='col-lg-5 col-md-6 col-sm-10 col-12 mx-auto mb-2'>
               <div className='input-group '>
                 <span className='input-group-text' id='basic-addon1'>
                   <SupervisorAccountIcon fontSize='small' />
@@ -82,7 +84,7 @@ const Register = ({ setAlert, register, history }) => {
                   name='role'
                   value={role}
                   onChange={(e) => onChange(e)}
-                  className='form-control '
+                  className='form-control py-2 shadow-none'
                 >
                   <option value='' disabled>
                     Role...
@@ -92,8 +94,7 @@ const Register = ({ setAlert, register, history }) => {
                 </select>
               </div>
             </div>
-
-            <div className='col-lg-7 col-sm-12 mx-auto mb-2'>
+            <div className='col-lg-5 col-md-6 col-sm-10 col-12 mx-auto mb-2'>
               <div className='input-group '>
                 <span className='input-group-text' id='basic-addon1'>
                   <VpnKeyIcon fontSize='small' />
@@ -103,13 +104,12 @@ const Register = ({ setAlert, register, history }) => {
                   value={password}
                   onChange={(e) => onChange(e)}
                   type='password'
-                  className='form-control '
+                  className='form-control py-2 shadow-none'
                   placeholder='Enter password'
                 />
               </div>
             </div>
-
-            <div className='col-lg-7 col-sm-12 mx-auto mb-2'>
+            <div className='col-lg-5 col-md-6 col-sm-10 col-12 mx-auto mb-2'>
               <div className='input-group '>
                 <span className='input-group-text' id='basic-addon1'>
                   <VpnKeyIcon fontSize='small' />
@@ -119,19 +119,19 @@ const Register = ({ setAlert, register, history }) => {
                   value={password2}
                   onChange={(e) => onChange(e)}
                   type='password'
-                  className='form-control '
+                  className='form-control py-2 shadow-none'
                   placeholder='Enter confirm password'
                 />
               </div>
             </div>
-            <div className='col-lg-7 col-sm-12 mx-auto mb-2'>
+            <div className='col-lg-5 col-md-6 col-sm-10 col-12 mx-auto mb-2'>
               {/* <div className="form-group light">
                 Already have an account? <Link to="/login">login</Link>
               </div> */}
               <div className='input-group mx-auto d-block text-right'>
                 <button
                   type='submit'
-                  className='btn-submit btn btn-primary  p-2 px-4'
+                  className='btn-submit btn btn-outline-secondary  p-2 px-4'
                 >
                   Signup
                 </button>

@@ -40,7 +40,9 @@ const App = () => {
       <Router>
         <Switch>
           <Layout>
-            <Route component={Routes} />
+            <main>
+              <Route component={Routes} />
+            </main>
           </Layout>
         </Switch>
       </Router>

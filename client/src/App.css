@@ -15,3 +15,11 @@
   background-color: #505253;
   padding: 3px 20px;
 }
+
+main {
+  min-height: 80vh;
+}
+
+.alert-msg {
+  margin-top: 25px;
+}

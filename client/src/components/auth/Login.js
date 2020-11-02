@@ -32,10 +32,11 @@ const Login = ({ login, isAuthenticated }) => {
   return (
     <div className='container'>
       <form onSubmit={(e) => onSubmit(e)}>
-        <div className='row'>
-          <h3 className='text-center form-title mb-4'>Login</h3>
-          <div className='col-lg-7 col-sm-12 mx-auto mb-2'>
-            <div className='input-group shadow'>
+        <div className='row d-block'>
+          <h3 className='text-muted my-3 text-center'>LOGIN</h3>
+
+          <div className='col-lg-5 col-md-6 col-sm-10 col-12 mx-auto mb-2'>
+            <div className='input-group '>
               <span className='input-group-text' id='basic-addon1'>
                 <EmailIcon fontSize='small' />
               </span>
@@ -44,15 +45,15 @@ const Login = ({ login, isAuthenticated }) => {
                 value={email}
                 onChange={(e) => onChange(e)}
                 type='email'
-                className='form-control'
+                className='form-control py-2 shadow-none'
                 placeholder='Enter email'
                 aria-label='email'
                 aria-describedby='basic-addon1'
               />
             </div>
           </div>
-          <div className='col-lg-7 col-sm-12 mx-auto mb-2'>
-            <div className='input-group shadow'>
+          <div className='col-lg-5 col-md-6 col-sm-10 col-12 mx-auto mb-2'>
+            <div className='input-group '>
               <span className='input-group-text' id='basic-addon1'>
                 <VpnKeyIcon fontSize='small' />
               </span>
@@ -61,14 +62,14 @@ const Login = ({ login, isAuthenticated }) => {
                 type='password'
                 value={password}
                 onChange={(e) => onChange(e)}
-                className='form-control'
+                className='form-control py-2 shadow-none'
                 placeholder='Enter password'
                 aria-label='password'
                 aria-describedby='basic-addon1'
               />
             </div>
           </div>
-          <div className='col-lg-7 col-sm-12 mx-auto mb-2'>
+          <div className='col-lg-5 col-md-6 col-sm-10 col-12 mx-auto mb-2'>
             <div className='login-flex-helper'>
               {/* <div className='form-group light'>
                 Don't you have an account? <Link to='/register'>Sigunp</Link>
@@ -81,7 +82,7 @@ const Login = ({ login, isAuthenticated }) => {
             <div className='input-group mx-auto d-block text-right'>
               <button
                 type='submit'
-                className='btn-submit btn btn-primary shadow p-2 px-4'
+                className='btn-submit btn btn-outline-secondary  p-2 px-4'
               >
                 Login
               </button>
