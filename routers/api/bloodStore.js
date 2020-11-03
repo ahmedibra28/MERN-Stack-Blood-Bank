@@ -53,6 +53,16 @@ router.post(
     const status = 'Stock';
     const bag = req.body.bag.toUpperCase();
 
+    let duplicateHandler = await BloodStore.find({
+      blood_component,
+      bag,
+    });
+
+    if (duplicateHandler.length >= 1)
+      return res
+        .status(400)
+        .json({ errors: [{ msg: 'This bag is already in the blood store' }] });
+
     try {
       const bloodStoreFields = {
         user,

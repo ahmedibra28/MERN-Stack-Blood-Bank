@@ -27,8 +27,7 @@ const BloodIssueList = ({
               <th>Platelet</th>
               <th>rbc</th>
               <th>wb</th>
-              <th>Action</th>
-              {/* <th>Action</th> */}
+              {user && user.role === 'Admin' && <th>Action</th>}
             </tr>
           </thead>
           <tbody>

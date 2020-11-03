@@ -86,18 +86,20 @@ export const updateBloodIssue = (formData) => async (dispatch) => {
 
 // Delete blood issue
 export const deleteBloodIssue = (id) => async (dispatch) => {
-  try {
-    const res = await axios.delete(`/api/blood-issue/${id}`);
-    dispatch({
-      type: UPDATE_BLOOD_ISSUE,
-      payload: res.data,
-    });
+  if (window.confirm('Are you sure? This can NOT be undone!')) {
+    try {
+      const res = await axios.delete(`/api/blood-issue/${id}`);
+      dispatch({
+        type: UPDATE_BLOOD_ISSUE,
+        payload: res.data,
+      });
 
-    dispatch(setAlert('Successfully Deleted Blood Issue', 'success'));
-  } catch (err) {
-    dispatch({
-      type: BLOOD_ISSUE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status },
-    });
+      dispatch(setAlert('Successfully Deleted Blood Issue', 'success'));
+    } catch (err) {
+      dispatch({
+        type: BLOOD_ISSUE_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status },
+      });
+    }
   }
 };

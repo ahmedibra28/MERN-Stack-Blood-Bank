@@ -13,6 +13,7 @@ import {
   updateBloodRequest,
 } from '../../actions/bloodRequest';
 import { getBloodStores, updateBloodStore } from '../../actions/bloodStore';
+import { setAlert } from '../../actions/alert';
 import Spinner from '../layout/Spinner';
 
 const initialValues = {
@@ -24,6 +25,7 @@ const initialValues = {
 };
 
 function BloodIssue({
+  setAlert,
   bloodIssues: { loading, bloodIssues },
   deleteBloodIssue,
   getBloodIssues,
@@ -59,24 +61,18 @@ function BloodIssue({
 
     // console.log(values);
 
-    if (values.plasma !== '' && values.platelet !== '') {
-      return console.log('Please, select only one option at atime');
-    }
-    if (values.plasma !== '' && values.rbc !== '') {
-      return console.log('Please, select only one option at atime');
-    }
-    if (values.plasma !== '' && values.wb !== '') {
-      return console.log('Please, select only one option at atime');
-    }
-    if (values.platelet !== '' && values.rbc !== '') {
-      return console.log('Please, select only one option at atime');
-    }
-    if (values.platelet !== '' && values.wb !== '') {
-      return console.log('Please, select only one option at atime');
-    }
-    if (values.rbc !== '' && values.wb !== '') {
-      return console.log('Please, select only one option at atime');
-    }
+    if (values.plasma !== '' && values.platelet !== '')
+      return setAlert('Please, select only one option at atime', 'danger');
+    if (values.plasma !== '' && values.rbc !== '')
+      return setAlert('Please, select only one option at atime', 'danger');
+    if (values.plasma !== '' && values.wb !== '')
+      return setAlert('Please, select only one option at atime', 'danger');
+    if (values.platelet !== '' && values.rbc !== '')
+      return setAlert('Please, select only one option at atime', 'danger');
+    if (values.platelet !== '' && values.wb !== '')
+      return setAlert('Please, select only one option at atime', 'danger');
+    if (values.rbc !== '' && values.wb !== '')
+      return setAlert('Please, select only one option at atime', 'danger');
 
     // Plasma
     if (values.plasma !== '') {
@@ -308,4 +304,5 @@ export default connect(mapStateToProps, {
   updateBloodRequest,
   getBloodStores,
   updateBloodStore,
+  setAlert,
 })(BloodIssue);
