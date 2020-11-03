@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 export default () => {
   return (
     <Fragment>
-      <div class='text-center'>
+      <div className='text-center'>
         <span
           className='spinner-border mt-5'
           style={{ width: '200px', height: '200px' }}

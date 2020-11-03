@@ -111,7 +111,7 @@ const Navbar = ({
         <strong>
           <a href='mailto:ahmaat19@gmail.com'>ahmaat19@gmail.com</a>
         </strong>
-        <span class='float-right'>v2</span>
+        <span className='float-right'>v2</span>
       </div>
     </>
   );

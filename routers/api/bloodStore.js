@@ -1,20 +1,20 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const auth = require("../../middleware/auth");
-const { check, validationResult } = require("express-validator");
-const checkObjectId = require("../../middleware/checkObjectId");
-const BloodStore = require("../../models/BloodStore");
+const auth = require('../../middleware/auth');
+const { check, validationResult } = require('express-validator');
+const checkObjectId = require('../../middleware/checkObjectId');
+const BloodStore = require('../../models/BloodStore');
 
 // @route    GET api/blood-store
 // @desc     Get all blood store
 // @access   Private
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const bloodStore = await BloodStore.find().sort({ date: -1 });
     res.json(bloodStore);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 });
 
@@ -22,17 +22,17 @@ router.get("/", async (req, res) => {
 // @desc     Create blood store
 // @access   Private
 router.post(
-  "/",
+  '/',
   [
     auth,
     [
-      check("donor", "Donor is required").not().isEmpty(),
-      check("hb", "HB is required").not().isEmpty(),
-      check("blood_group", "Blood Group is required").not().isEmpty(),
-      check("blood_component", "Blood Component is required").not().isEmpty(),
-      check("unit", "Unit is required").not().isEmpty(),
-      check("bag", "Bag is required").not().isEmpty(),
-      check("hb", "HB must between 12 and 20").isInt({
+      check('donor', 'Donor is required').not().isEmpty(),
+      check('hb', 'HB is required').not().isEmpty(),
+      check('blood_group', 'Blood Group is required').not().isEmpty(),
+      check('blood_component', 'Blood Component is required').not().isEmpty(),
+      check('unit', 'Unit is required').not().isEmpty(),
+      check('bag', 'Bag is required').not().isEmpty(),
+      check('hb', 'HB must between 12 and 20').isInt({
         min: 12,
         max: 20,
       }),
@@ -50,7 +50,7 @@ router.post(
     const blood_group = req.body.blood_group;
     const blood_component = req.body.blood_component;
     const unit = req.body.unit;
-    const status = "Stock";
+    const status = 'Stock';
     const bag = req.body.bag.toUpperCase();
 
     try {
@@ -71,7 +71,7 @@ router.post(
       return res.status(200).json(await BloodStore.find().sort({ date: -1 }));
     } catch (err) {
       console.error(err.message);
-      res.status(500).send("Server error");
+      res.status(500).send('Server error');
     }
   }
 );
@@ -80,18 +80,18 @@ router.post(
 // @desc     Update blood request
 // @access   Private
 router.put(
-  "/:id",
+  '/:id',
   [
     auth,
-    checkObjectId("id"),
+    checkObjectId('id'),
     [
-      check("donor", "Donor is required").not().isEmpty(),
-      check("hb", "HB is required").not().isEmpty(),
-      check("blood_group", "Blood Group is required").not().isEmpty(),
-      check("blood_component", "Blood Component is required").not().isEmpty(),
-      check("unit", "Unit is required").not().isEmpty(),
-      check("bag", "Bag is required").not().isEmpty(),
-      check("hb", "HB must between 12 and 20").isInt({
+      check('donor', 'Donor is required').not().isEmpty(),
+      check('hb', 'HB is required').not().isEmpty(),
+      check('blood_group', 'Blood Group is required').not().isEmpty(),
+      check('blood_component', 'Blood Component is required').not().isEmpty(),
+      check('unit', 'Unit is required').not().isEmpty(),
+      check('bag', 'Bag is required').not().isEmpty(),
+      check('hb', 'HB must between 12 and 20').isInt({
         min: 12,
         max: 20,
       }),
@@ -132,7 +132,7 @@ router.put(
       return res.status(200).json(await BloodStore.find().sort({ date: -1 }));
     } catch (err) {
       console.error(err.message);
-      res.status(500).send("Server error");
+      res.status(500).send('Server error');
     }
   }
 );
@@ -140,18 +140,18 @@ router.put(
 // @route    DELETE api/blood-store
 // @desc     Delete blood store
 // @access   Private
-router.delete("/:id", [auth, checkObjectId("id")], async (req, res) => {
+router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
   try {
     const bloodStore = await BloodStore.findOneAndRemove({
       _id: req.params.id,
     });
 
-    if (!bloodStore) return res.json({ errors: [{ msg: "Invalid ID" }] });
+    if (!bloodStore) return res.json({ errors: [{ msg: 'Invalid ID' }] });
 
     return res.status(200).json(await BloodStore.find().sort({ date: -1 }));
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server error");
+    res.status(500).send('Server error');
   }
 });
 
