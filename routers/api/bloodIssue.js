@@ -4,7 +4,7 @@ const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 const checkObjectId = require('../../middleware/checkObjectId');
 const BloodIssue = require('../../models/BloodIssue');
-const BloodRequest = require('../../models/BloodRequest');
+const BloodStore = require('../../models/BloodStore');
 
 // @route    GET api/blood-issue
 // @desc     Get all blood issue
@@ -62,6 +62,103 @@ router.post(
 
       bloodIssue = new BloodIssue(bloodIssueFields);
       await bloodIssue.save();
+
+      // Updating Blood Store
+      if (plasma !== '') {
+        let updateIssue = await BloodStore.findOne({
+          bag: plasma,
+          blood_component: 'Plasma',
+        });
+
+        await BloodStore.updateOne(
+          { _id: updateIssue._id },
+          {
+            $set: {
+              blood_component: updateIssue.blood_component,
+              user: updateIssue.user,
+              _id: updateIssue._id,
+              donor: updateIssue.donor,
+              hb: updateIssue.hb,
+              blood_group: updateIssue.blood_group,
+              unit: updateIssue.unit,
+              bag: updateIssue.bag,
+              status: 'Issued',
+            },
+          }
+        );
+      }
+
+      if (platelet !== '') {
+        let updateIssue = await BloodStore.findOne({
+          bag: platelet,
+          blood_component: 'Platelet',
+        });
+
+        await BloodStore.updateOne(
+          { _id: updateIssue._id },
+          {
+            $set: {
+              blood_component: updateIssue.blood_component,
+              user: updateIssue.user,
+              _id: updateIssue._id,
+              donor: updateIssue.donor,
+              hb: updateIssue.hb,
+              blood_group: updateIssue.blood_group,
+              unit: updateIssue.unit,
+              bag: updateIssue.bag,
+              status: 'Issued',
+            },
+          }
+        );
+      }
+
+      if (rbc !== '') {
+        let updateIssue = await BloodStore.findOne({
+          bag: rbc,
+          blood_component: 'RBC',
+        });
+
+        await BloodStore.updateOne(
+          { _id: updateIssue._id },
+          {
+            $set: {
+              blood_component: updateIssue.blood_component,
+              user: updateIssue.user,
+              _id: updateIssue._id,
+              donor: updateIssue.donor,
+              hb: updateIssue.hb,
+              blood_group: updateIssue.blood_group,
+              unit: updateIssue.unit,
+              bag: updateIssue.bag,
+              status: 'Issued',
+            },
+          }
+        );
+      }
+
+      if (wb !== '') {
+        let updateIssue = await BloodStore.findOne({
+          bag: wb,
+          blood_component: 'Whole Blood',
+        });
+
+        await BloodStore.updateOne(
+          { _id: updateIssue._id },
+          {
+            $set: {
+              blood_component: updateIssue.blood_component,
+              user: updateIssue.user,
+              _id: updateIssue._id,
+              donor: updateIssue.donor,
+              hb: updateIssue.hb,
+              blood_group: updateIssue.blood_group,
+              unit: updateIssue.unit,
+              bag: updateIssue.bag,
+              status: 'Issued',
+            },
+          }
+        );
+      }
 
       return res
         .status(200)
