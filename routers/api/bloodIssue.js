@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const asyncHandler = require('express-async-handler');
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 const checkObjectId = require('../../middleware/checkObjectId');
@@ -9,17 +10,23 @@ const BloodStore = require('../../models/BloodStore');
 // @route    GET api/blood-issue
 // @desc     Get all blood issue
 // @access   Private
-router.get('/', auth, async (req, res) => {
-  try {
-    const bloodIssue = await BloodIssue.find()
-      .sort({ date: -1 })
-      .populate('patient', ['patient_id', 'patient_name', 'blood_group']);
-    res.json(bloodIssue);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server Error');
-  }
-});
+router.get(
+  '/',
+  auth,
+  asyncHandler(async (req, res) => {
+    try {
+      const bloodIssue = await BloodIssue.find()
+        .sort({ date: -1 })
+        .populate()
+        .populate('user', ['name'])
+        .populate('patient', ['patient_id', 'patient_name', 'blood_group']);
+      res.json(bloodIssue);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  })
+);
 
 // @route    POST api/blood-issue
 // @desc     Create blood issue
@@ -27,7 +34,7 @@ router.get('/', auth, async (req, res) => {
 router.post(
   '/',
   [auth, [check('patient', 'Patient is required').not().isEmpty()]],
-  async (req, res) => {
+  asyncHandler(async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -165,37 +172,43 @@ router.post(
         .json(
           await BloodIssue.find()
             .sort({ date: -1 })
+            .populate('user', ['name'])
             .populate('patient', ['patient_id', 'patient_name', 'blood_group'])
         );
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
     }
-  }
+  })
 );
 
 // @route    DELETE api/blood store
 // @desc     Delete blood store
 // @access   Private
-router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
-  try {
-    const bloodIssue = await BloodIssue.findOneAndRemove({
-      _id: req.params.id,
-    });
+router.delete(
+  '/:id',
+  [auth, checkObjectId('id')],
+  asyncHandler(async (req, res) => {
+    try {
+      const bloodIssue = await BloodIssue.findOneAndRemove({
+        _id: req.params.id,
+      });
 
-    if (!bloodIssue) return res.json({ errors: [{ msg: 'Invalid ID' }] });
+      if (!bloodIssue) return res.json({ errors: [{ msg: 'Invalid ID' }] });
 
-    return res
-      .status(200)
-      .json(
-        await BloodIssue.find()
-          .sort({ date: -1 })
-          .populate('patient', ['patient_id', 'patient_name', 'blood_group'])
-      );
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server error');
-  }
-});
+      return res
+        .status(200)
+        .json(
+          await BloodIssue.find()
+            .sort({ date: -1 })
+            .populate('user', ['name'])
+            .populate('patient', ['patient_id', 'patient_name', 'blood_group'])
+        );
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  })
+);
 
 module.exports = router;

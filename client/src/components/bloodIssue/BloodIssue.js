@@ -93,26 +93,8 @@ function BloodIssue({
             wb: request.blood_component.wb,
           };
 
-          bloodStores &&
-            bloodStores.map((store) => {
-              if (store.bag === values.plasma) {
-                // console.log(store);
-                const newStore = {
-                  _id: store._id,
-                  bag: store.bag,
-                  blood_component: store.blood_component,
-                  blood_group: store.blood_group,
-                  donor: store.donor,
-                  hb: store.hb,
-                  status: 'Issued',
-                  unit: store.unit,
-                };
-                updateBloodRequest(newPlasma);
-                console.log(newStore);
-                updateBloodStore(newStore);
-                addBloodIssue(values);
-              }
-            });
+          updateBloodRequest(newPlasma);
+          addBloodIssue(values);
         }
       });
     }
@@ -136,25 +118,8 @@ function BloodIssue({
             rbc: request.blood_component.rbc,
             wb: request.blood_component.wb,
           };
-          bloodStores &&
-            bloodStores.map((store) => {
-              if (store.bag === values.platelet) {
-                const newStore = {
-                  _id: store._id,
-                  bag: store.bag,
-                  blood_component: store.blood_component,
-                  blood_group: store.blood_group,
-                  donor: store.donor,
-                  hb: store.hb,
-                  status: 'Issued',
-                  unit: store.unit,
-                };
-                updateBloodRequest(newPlatelet);
-                console.log(newStore);
-                updateBloodStore(newStore);
-                addBloodIssue(values);
-              }
-            });
+          updateBloodRequest(newPlatelet);
+          addBloodIssue(values);
         }
       });
     }
@@ -177,25 +142,9 @@ function BloodIssue({
             rbc: subtractedRBC,
             wb: request.blood_component.wb,
           };
-          bloodStores &&
-            bloodStores.map((store) => {
-              if (store.bag === values.rbc) {
-                const newStore = {
-                  _id: store._id,
-                  bag: store.bag,
-                  blood_component: store.blood_component,
-                  blood_group: store.blood_group,
-                  donor: store.donor,
-                  hb: store.hb,
-                  status: 'Issued',
-                  unit: store.unit,
-                };
-                updateBloodRequest(newRBC);
-                console.log(newStore);
-                updateBloodStore(newStore);
-                addBloodIssue(values);
-              }
-            });
+
+          updateBloodRequest(newRBC);
+          addBloodIssue(values);
         }
       });
     }
@@ -218,25 +167,9 @@ function BloodIssue({
             rbc: request.blood_component.rbc,
             wb: subtractedWB,
           };
-          bloodStores &&
-            bloodStores.map((store) => {
-              if (store.bag === values.wb) {
-                const newStore = {
-                  _id: store._id,
-                  bag: store.bag,
-                  blood_component: store.blood_component,
-                  blood_group: store.blood_group,
-                  donor: store.donor,
-                  hb: store.hb,
-                  status: 'Issued',
-                  unit: store.unit,
-                };
-                updateBloodRequest(newWB);
-                console.log(newStore);
-                updateBloodStore(newStore);
-                addBloodIssue(values);
-              }
-            });
+
+          updateBloodRequest(newWB);
+          addBloodIssue(values);
         }
       });
     }
