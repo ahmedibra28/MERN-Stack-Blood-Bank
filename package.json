@@ -1,12 +1,13 @@
 {
-  "name": "mern-stack-blood-bank",
-  "version": "1.0.0",
-  "description": "Complete MERN-Stack blood-bank",
+  "name": "blood_bank",
+  "version": "1.0.1",
+  "description": "Complete YARDIMELi Blood Bank System",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "start": "node server",
-    "server": "nodemon server",
-    "client": "npm start --prefix client",
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Ahmed Ibrahim",
@@ -14,17 +15,17 @@
   "dependencies": {
     "axios": "^0.20.0",
     "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
     "concurrently": "^5.3.0",
-    "config": "^3.3.2",
+    "config": "^3.3.3",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
-    "express-validator": "^6.6.1",
+    "express-validator": "^6.8.0",
     "gravatar": "^1.8.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.7",
+    "mongoose": "^5.11.5",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.4",
-    "winston": "^3.3.3",
-    "winston-mongodb": "^5.0.5"
+    "nodemon": "^2.0.6"
   }
 }
