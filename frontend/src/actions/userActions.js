@@ -143,7 +143,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
   }
 }
 
-export const listUsers = (pageNumber = '') => async (dispatch, getState) => {
+export const listUsers = () => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_LIST_REQUEST })
 
@@ -157,10 +157,7 @@ export const listUsers = (pageNumber = '') => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(
-      `/api/users?pageNumber=${pageNumber}`,
-      config
-    )
+    const { data } = await axios.get(`/api/users`, config)
 
     dispatch({ type: USER_LIST_SUCCESS, payload: data })
   } catch (error) {

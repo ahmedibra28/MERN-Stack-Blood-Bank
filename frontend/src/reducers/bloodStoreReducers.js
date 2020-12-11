@@ -25,10 +25,7 @@ export const bloodStoreListReducer = (state = { bloodStores: [] }, action) => {
     case BLOOD_STORE_SUCCESS:
       return {
         loading: false,
-        bloodStores: action.payload.bloodStore,
-        pages: action.payload.pages,
-        page: action.payload.page,
-        lastPage: action.payload.lastPage,
+        bloodStores: action.payload,
       }
     case BLOOD_STORE_FAIL:
       return {

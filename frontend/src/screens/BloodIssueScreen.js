@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import ReactPaginate from 'react-paginate'
+
 import Moment from 'react-moment'
 import moment from 'moment'
 import { useDispatch, useSelector } from 'react-redux'
@@ -17,8 +19,6 @@ import {
   // updateBloodRequest,
 } from '../actions/bloodRequestActions'
 
-import Pagination from '../components/Pagination'
-
 const initialValues = {
   patient: '',
   plasma: '',
@@ -29,7 +29,6 @@ const initialValues = {
 
 const BloodIssueScreen = ({ match }) => {
   const bloodRequestId = match.params.id
-  const pageNumber = match.params.pageNumber || 1
 
   const [values, setValues] = useState(initialValues)
   const [edit, setEdit] = useState(false)
@@ -37,7 +36,7 @@ const BloodIssueScreen = ({ match }) => {
 
   const dispatch = useDispatch()
   const bloodIssueList = useSelector((state) => state.bloodIssueList)
-  const { bloodIssues, error, loading, pages, page, lastPage } = bloodIssueList
+  const { bloodIssues, error, loading } = bloodIssueList
 
   const bloodIssueCreate = useSelector((state) => state.bloodIssueCreate)
   const {
@@ -78,13 +77,13 @@ const BloodIssueScreen = ({ match }) => {
 
   useEffect(() => {
     dispatch(listBloodRequest())
-    dispatch(listBloodIssue(pageNumber))
+    dispatch(listBloodIssue())
     dispatch(listBloodStore())
     if (successCreate) {
       formCleanHandler()
     }
     // eslint-disable-next-line
-  }, [dispatch, pageNumber, successCreate, successDelete, successCreateRequest])
+  }, [dispatch, successCreate, successDelete, successCreateRequest])
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you use?')) {
@@ -106,6 +105,15 @@ const BloodIssueScreen = ({ match }) => {
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value })
   }
+
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const itemsPerPage = 5
+  const indexOfLastItem = currentPage * itemsPerPage
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage
+  const currentItems =
+    bloodIssues && bloodIssues.slice(indexOfFirstItem, indexOfLastItem)
+  const totalItems = bloodIssues && Math.ceil(bloodIssues.length / itemsPerPage)
 
   return (
     <>
@@ -345,14 +353,6 @@ const BloodIssueScreen = ({ match }) => {
           <i className='fas fa-plus'></i> REGISTER NEW BLOOD ISSUE
         </button>
       </div>
-      <div className='d-flex justify-content-center mt-2'>
-        <Pagination
-          pages={pages}
-          page={page}
-          lastPage={lastPage}
-          url={`/blood-Issue`}
-        />
-      </div>
 
       {loadingDelete ? (
         <Loader />
@@ -386,7 +386,7 @@ const BloodIssueScreen = ({ match }) => {
               </thead>
               <tbody>
                 {bloodIssues &&
-                  bloodIssues.map((blood) => (
+                  currentItems.map((blood) => (
                     <tr key={blood._id}>
                       <td>
                         <Moment format='YYYY-MM-DD HH:mm:ss'>
@@ -447,6 +447,28 @@ const BloodIssueScreen = ({ match }) => {
                 No data found!
               </span>
             )}
+            <div className='d-flex justify-content-center'>
+              <ReactPaginate
+                previousLabel='previous'
+                previousClassName='page-item'
+                previousLinkClassName='page-link'
+                nextLabel='next'
+                nextClassName='page-item'
+                nextLinkClassName='page-link'
+                pageClassName='page-item'
+                pageLinkClassName='page-link'
+                activeClassName='page-item active'
+                activeLinkClassName={'page-link'}
+                breakLabel={'...'}
+                breakClassName={'page-item'}
+                breakLinkClassName={'page-link'}
+                pageCount={totalItems}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={2}
+                onPageChange={(e) => setCurrentPage(e.selected + 1)}
+                containerClassName={'page pagination'}
+              />
+            </div>
           </div>
         </>
       )}

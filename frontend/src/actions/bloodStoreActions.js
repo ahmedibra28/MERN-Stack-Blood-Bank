@@ -14,13 +14,11 @@ import {
   BLOOD_STORE_DELETE_FAIL,
 } from '../constants/bloodStoreConstants'
 
-export const listBloodStore = (pageNumber = '') => async (dispatch) => {
+export const listBloodStore = () => async (dispatch) => {
   try {
     dispatch({ type: BLOOD_STORE_REQUEST })
 
-    const { data } = await axios.get(
-      `/api/blood-store?pageNumber=${pageNumber}`
-    )
+    const { data } = await axios.get(`/api/blood-store`)
 
     dispatch({
       type: BLOOD_STORE_SUCCESS,
@@ -52,11 +50,7 @@ export const createBloodStore = (blood) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.post(
-      `/api/blood-store?pageNumber`,
-      blood,
-      config
-    )
+    const { data } = await axios.post(`/api/blood-store`, blood, config)
 
     dispatch({
       type: BLOOD_STORE_CREATE_SUCCESS,

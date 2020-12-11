@@ -40,6 +40,7 @@ const HomeScreen = () => {
                   <ul className='list-group list-group-flush'>
                     <li className='list-group-item'>
                       <strong>A + </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -51,6 +52,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>B + </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -62,6 +64,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>AB + </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -73,6 +76,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>O + </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -84,6 +88,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>A - </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -95,6 +100,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>B - </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -106,6 +112,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>AB - </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -117,6 +124,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>O - </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -135,10 +143,11 @@ const HomeScreen = () => {
             <div className='col-lg-3 col-md-6 col-sm-6 col-12'>
               <div className='card text-center'>
                 <div className='card-header'>Platelet</div>
-                <div className='card-body text-left'>
+                <div className='card-body '>
                   <ul className='list-group list-group-flush'>
                     <li className='list-group-item'>
                       <strong>A + </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -150,6 +159,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>B + </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -161,6 +171,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>AB + </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -172,6 +183,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>O + </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -183,6 +195,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>A - </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -194,6 +207,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>B - </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -205,6 +219,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>AB - </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -216,6 +231,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>O - </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -234,10 +250,11 @@ const HomeScreen = () => {
             <div className='col-lg-3 col-md-6 col-sm-6 col-12'>
               <div className='card text-center'>
                 <div className='card-header'>RBC</div>
-                <div className='card-body text-left'>
+                <div className='card-body '>
                   <ul className='list-group list-group-flush'>
                     <li className='list-group-item'>
                       <strong>A + </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -249,6 +266,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>B + </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -260,6 +278,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>AB + </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -271,6 +290,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>O + </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -282,6 +302,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>A - </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -293,6 +314,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>B - </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -304,6 +326,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>AB - </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -315,6 +338,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>O - </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -333,10 +357,11 @@ const HomeScreen = () => {
             <div className='col-lg-3 col-md-6 col-sm-6 col-12'>
               <div className='card text-center'>
                 <div className='card-header'>Whole Blood</div>
-                <div className='card-body text-left'>
+                <div className='card-body '>
                   <ul className='list-group list-group-flush'>
                     <li className='list-group-item'>
                       <strong>A + </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -348,6 +373,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>B + </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -359,6 +385,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>AB + </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -370,6 +397,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>O + </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -381,6 +409,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>A - </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -392,6 +421,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>B - </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -403,6 +433,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>AB - </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
@@ -414,6 +445,7 @@ const HomeScreen = () => {
                     </li>
                     <li className='list-group-item'>
                       <strong>O - </strong>{' '}
+                      <i className='fas fa-arrow-right'></i>{' '}
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({

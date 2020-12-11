@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import ReactPaginate from 'react-paginate'
 import { Link } from 'react-router-dom'
 import Moment from 'react-moment'
 import moment from 'moment'
@@ -11,7 +12,6 @@ import {
   updateBloodRequest,
   deleteBloodRequest,
 } from '../actions/bloodRequestActions'
-import Pagination from '../components/Pagination'
 
 const initialValues = {
   patient_id: '',
@@ -24,21 +24,12 @@ const initialValues = {
 }
 
 const BloodRequestScreen = ({ match }) => {
-  const pageNumber = match.params.pageNumber || 1
-
   const [values, setValues] = useState(initialValues)
   const [edit, setEdit] = useState(false)
 
   const dispatch = useDispatch()
   const bloodRequestList = useSelector((state) => state.bloodRequestList)
-  const {
-    bloodRequests,
-    error,
-    loading,
-    pages,
-    page,
-    lastPage,
-  } = bloodRequestList
+  const { bloodRequests, error, loading } = bloodRequestList
 
   const bloodRequestCreate = useSelector((state) => state.bloodRequestCreate)
   const {
@@ -78,12 +69,12 @@ const BloodRequestScreen = ({ match }) => {
   }
 
   useEffect(() => {
-    dispatch(listBloodRequest(pageNumber))
+    dispatch(listBloodRequest())
     if (successCreate || successUpdate) {
       formCleanHandler()
     }
     // eslint-disable-next-line
-  }, [dispatch, pageNumber, successCreate, successUpdate, successDelete])
+  }, [dispatch, successCreate, successUpdate, successDelete])
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you use?')) {
@@ -117,6 +108,16 @@ const BloodRequestScreen = ({ match }) => {
     })
     setEdit(true)
   }
+
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const itemsPerPage = 5
+  const indexOfLastItem = currentPage * itemsPerPage
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage
+  const currentItems =
+    bloodRequests && bloodRequests.slice(indexOfFirstItem, indexOfLastItem)
+  const totalItems =
+    bloodRequests && Math.ceil(bloodRequests.length / itemsPerPage)
 
   return (
     <>
@@ -187,6 +188,7 @@ const BloodRequestScreen = ({ match }) => {
                         value={values.patient_id}
                         className='form-control '
                         placeholder='Enter patient ID'
+                        required
                       />
                     </div>
                     <label htmlFor='patient_name'>Patient Name</label>
@@ -198,6 +200,7 @@ const BloodRequestScreen = ({ match }) => {
                         value={values.patient_name}
                         className='form-control '
                         placeholder='Enter patient name'
+                        required
                       />
                     </div>
                     <label htmlFor='blood_group'>Blood Group</label>
@@ -207,6 +210,7 @@ const BloodRequestScreen = ({ match }) => {
                         onChange={handleChange}
                         value={values.blood_group}
                         className='form-control '
+                        required
                       >
                         <option value='' disabled>
                           Blood Group...
@@ -298,14 +302,6 @@ const BloodRequestScreen = ({ match }) => {
           <i className='fas fa-plus'></i> REGISTER NEW REQUEST
         </button>
       </div>
-      <div className='d-flex justify-content-center mt-2'>
-        <Pagination
-          pages={pages}
-          page={page}
-          lastPage={lastPage}
-          url={`/blood-request`}
-        />
-      </div>
 
       {loading ? (
         <Loader />
@@ -331,7 +327,7 @@ const BloodRequestScreen = ({ match }) => {
               </thead>
               <tbody>
                 {bloodRequests &&
-                  bloodRequests.map((blood) => (
+                  currentItems.map((blood) => (
                     <tr key={blood._id}>
                       <td>
                         <Moment format='YYYY-MM-DD HH:mm:ss'>
@@ -382,6 +378,28 @@ const BloodRequestScreen = ({ match }) => {
                 No data found!
               </span>
             )}
+            <div className='d-flex justify-content-center'>
+              <ReactPaginate
+                previousLabel='previous'
+                previousClassName='page-item'
+                previousLinkClassName='page-link'
+                nextLabel='next'
+                nextClassName='page-item'
+                nextLinkClassName='page-link'
+                pageClassName='page-item'
+                pageLinkClassName='page-link'
+                activeClassName='page-item active'
+                activeLinkClassName={'page-link'}
+                breakLabel={'...'}
+                breakClassName={'page-item'}
+                breakLinkClassName={'page-link'}
+                pageCount={totalItems && totalItems}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={2}
+                onPageChange={(e) => setCurrentPage(e.selected + 1)}
+                containerClassName={'page pagination'}
+              />
+            </div>
           </div>
         </>
       )}

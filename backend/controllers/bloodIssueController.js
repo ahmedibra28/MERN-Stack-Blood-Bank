@@ -4,28 +4,12 @@ import BloodIssueModel from '../models/bloodIssueModel.js'
 import BloodRequestModel from '../models/bloodRequestModel.js'
 
 export const getBloodIssue = asyncHandler(async (req, res) => {
-  // console.log(await BloodStoreModel.findById('5f7806c70d2d95f5468801b4'))
-
-  const pageSize = 20
-  const page = Number(req.query.pageNumber) || 1
-
-  const count = await BloodIssueModel.countDocuments({})
-
-  console.log(count)
-
   const bloodIssue = await BloodIssueModel.find({})
-    .limit(pageSize)
-    .skip(pageSize * (page - 1))
     .sort({ createdAt: -1 })
     .populate('user', ['name'])
     .populate('patient', ['patient_id', 'patient_name'])
 
-  res.json({
-    bloodIssue,
-    page,
-    pages: Math.ceil(count / pageSize),
-    lastPage: Math.ceil(count / pageSize),
-  })
+  res.json(bloodIssue)
 })
 
 export const postBloodIssue = asyncHandler(async (req, res) => {

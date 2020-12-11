@@ -28,10 +28,7 @@ export const bloodRequestListReducer = (
     case BLOOD_REQUEST_SUCCESS:
       return {
         loading: false,
-        bloodRequests: action.payload.bloodRequest,
-        pages: action.payload.pages,
-        page: action.payload.page,
-        lastPage: action.payload.lastPage,
+        bloodRequests: action.payload,
       }
     case BLOOD_REQUEST_FAIL:
       return {

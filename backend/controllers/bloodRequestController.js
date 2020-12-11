@@ -2,25 +2,11 @@ import asyncHandler from 'express-async-handler'
 import BloodRequestModel from '../models/bloodRequestModel.js'
 
 export const getBloodRequest = asyncHandler(async (req, res) => {
-  const pageSize = 20
-  const page = Number(req.query.pageNumber) || 1
-
-  const count = await BloodRequestModel.countDocuments({})
-
-  console.log(count)
-
   const bloodRequest = await BloodRequestModel.find({})
-    .limit(pageSize)
-    .skip(pageSize * (page - 1))
     .sort({ createdAt: -1 })
     .populate('user', ['name'])
 
-  res.json({
-    bloodRequest,
-    page,
-    pages: Math.ceil(count / pageSize),
-    lastPage: Math.ceil(count / pageSize),
-  })
+  res.json(bloodRequest)
 })
 
 export const postBloodRequest = asyncHandler(async (req, res) => {
@@ -33,7 +19,7 @@ export const postBloodRequest = asyncHandler(async (req, res) => {
   const rbc = req.body.rbc
   const wb = req.body.wb
 
-  if (plasma === '' && platelet === '' && rbc === '' && wb === '') {
+  if (!plasma && !platelet && !rbc && !wb) {
     res.status(400)
     throw new Error('Blood Component is required')
   }

@@ -21,10 +21,7 @@ export const bloodIssueListReducer = (state = { bloodIssues: [] }, action) => {
     case BLOOD_ISSUE_SUCCESS:
       return {
         loading: false,
-        bloodIssues: action.payload.bloodIssue,
-        pages: action.payload.pages,
-        page: action.payload.page,
-        lastPage: action.payload.lastPage,
+        bloodIssues: action.payload,
       }
     case BLOOD_ISSUE_FAIL:
       return {

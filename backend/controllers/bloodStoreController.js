@@ -2,23 +2,11 @@ import asyncHandler from 'express-async-handler'
 import BloodStoreModel from '../models/bloodStoreModel.js'
 
 export const getBloodStore = asyncHandler(async (req, res) => {
-  const pageSize = 10
-  const page = Number(req.query.pageNumber) || 1
-
-  const count = await BloodStoreModel.countDocuments({ status: 'Stock' })
-
   const bloodStore = await BloodStoreModel.find()
-    .limit(pageSize)
-    .skip(pageSize * (page - 1))
     .sort({ createdAt: -1 })
     .populate('user', ['name'])
 
-  res.json({
-    bloodStore,
-    page,
-    pages: Math.ceil(count / pageSize),
-    lastPage: Math.ceil(count / pageSize),
-  })
+  res.json(bloodStore)
 })
 
 export const postBloodStore = asyncHandler(async (req, res) => {

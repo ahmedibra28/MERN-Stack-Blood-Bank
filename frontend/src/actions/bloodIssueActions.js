@@ -11,13 +11,11 @@ import {
   BLOOD_ISSUE_DELETE_FAIL,
 } from '../constants/bloodIssueConstants'
 
-export const listBloodIssue = (pageNumber = '') => async (dispatch) => {
+export const listBloodIssue = () => async (dispatch) => {
   try {
     dispatch({ type: BLOOD_ISSUE_REQUEST })
 
-    const { data } = await axios.get(
-      `/api/blood-issue?pageNumber=${pageNumber}`
-    )
+    const { data } = await axios.get(`/api/blood-issue`)
 
     dispatch({
       type: BLOOD_ISSUE_SUCCESS,
@@ -49,11 +47,7 @@ export const createBloodIssue = (blood) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.post(
-      `/api/blood-issue?pageNumber`,
-      blood,
-      config
-    )
+    const { data } = await axios.post(`/api/blood-issue`, blood, config)
 
     dispatch({
       type: BLOOD_ISSUE_CREATE_SUCCESS,

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import ReactPaginate from 'react-paginate'
 import Moment from 'react-moment'
 import moment from 'moment'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,7 +11,6 @@ import {
   updateBloodStore,
   deleteBloodStore,
 } from '../actions/bloodStoreActions'
-import Pagination from '../components/Pagination'
 
 const initialValues = {
   donor: '',
@@ -22,15 +22,13 @@ const initialValues = {
   bag: '',
 }
 
-const BloodStoreScreen = ({ match }) => {
-  const pageNumber = match.params.pageNumber || 1
-
+const BloodStoreScreen = () => {
   const [values, setValues] = useState(initialValues)
   const [edit, setEdit] = useState(false)
 
   const dispatch = useDispatch()
   const bloodStoreList = useSelector((state) => state.bloodStoreList)
-  const { bloodStores, error, loading, pages, page, lastPage } = bloodStoreList
+  const { bloodStores, error, loading } = bloodStoreList
 
   const bloodStoreCreate = useSelector((state) => state.bloodStoreCreate)
   const {
@@ -70,12 +68,12 @@ const BloodStoreScreen = ({ match }) => {
   }
 
   useEffect(() => {
-    dispatch(listBloodStore(pageNumber))
+    dispatch(listBloodStore())
     if (successCreate || successUpdate) {
       formCleanHandler()
     }
     // eslint-disable-next-line
-  }, [dispatch, pageNumber, successCreate, successUpdate, successDelete])
+  }, [dispatch, successCreate, successUpdate, successDelete])
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you use?')) {
@@ -108,6 +106,18 @@ const BloodStoreScreen = ({ match }) => {
     })
     setEdit(true)
   }
+
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const itemsPerPage = 5
+  const indexOfLastItem = currentPage * itemsPerPage
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage
+  const filteredItems =
+    bloodStores && bloodStores.filter((blood) => blood.status === 'Stock')
+  const currentItems =
+    filteredItems && filteredItems.slice(indexOfFirstItem, indexOfLastItem)
+  const totalItems =
+    filteredItems && Math.ceil(filteredItems.length / itemsPerPage)
 
   return (
     <>
@@ -294,14 +304,6 @@ const BloodStoreScreen = ({ match }) => {
           <i className='fas fa-plus'></i> REGISTER NEW BLOOD
         </button>
       </div>
-      <div className='d-flex justify-content-center mt-2'>
-        <Pagination
-          pages={pages}
-          page={page}
-          lastPage={lastPage}
-          url={`/blood-store`}
-        />
-      </div>
 
       {loading ? (
         <Loader />
@@ -323,43 +325,40 @@ const BloodStoreScreen = ({ match }) => {
                 </tr>
               </thead>
               <tbody>
-                {bloodStores &&
-                  bloodStores.map(
-                    (blood) =>
-                      blood.status === 'Stock' && (
-                        <tr key={blood._id}>
-                          <td>
-                            <Moment format='YYYY-MM-DD HH:mm:ss'>
-                              {moment(blood.createdAt)}
-                            </Moment>
-                          </td>
-                          <td>{blood.blood_group}</td>
-                          <td>{blood.blood_component}</td>
-                          <td>{blood.unit}</td>
-                          <td>{blood.bag}</td>
-                          <td>{blood.user && blood.user.name}</td>
+                {currentItems &&
+                  currentItems.map((blood) => (
+                    <tr key={blood._id}>
+                      <td>
+                        <Moment format='YYYY-MM-DD HH:mm:ss'>
+                          {moment(blood.createdAt)}
+                        </Moment>
+                      </td>
+                      <td>{blood.blood_group}</td>
+                      <td>{blood.blood_component}</td>
+                      <td>{blood.unit}</td>
+                      <td>{blood.bag}</td>
+                      <td>{blood.user && blood.user.name}</td>
 
-                          <td>
-                            <button
-                              className='btn btn-light btn-sm'
-                              onClick={(e) => editHandler(blood)}
-                              data-bs-toggle='modal'
-                              data-bs-target='#editBloodStoreModal'
-                            >
-                              <i className='fas fa-edit'></i>
-                            </button>
-                            {userInfo && userInfo.isAdmin && (
-                              <button
-                                className='btn btn-danger btn-sm'
-                                onClick={() => deleteHandler(blood._id)}
-                              >
-                                <i className='fas fa-trash'></i>
-                              </button>
-                            )}
-                          </td>
-                        </tr>
-                      )
-                  )}
+                      <td>
+                        <button
+                          className='btn btn-light btn-sm'
+                          onClick={(e) => editHandler(blood)}
+                          data-bs-toggle='modal'
+                          data-bs-target='#editBloodStoreModal'
+                        >
+                          <i className='fas fa-edit'></i>
+                        </button>
+                        {userInfo && userInfo.isAdmin && (
+                          <button
+                            className='btn btn-danger btn-sm'
+                            onClick={() => deleteHandler(blood._id)}
+                          >
+                            <i className='fas fa-trash'></i>
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
             {bloodStores && !loading && bloodStores.length === 0 && (
@@ -367,6 +366,28 @@ const BloodStoreScreen = ({ match }) => {
                 No data found!
               </span>
             )}
+            <div className='d-flex justify-content-center'>
+              <ReactPaginate
+                previousLabel='previous'
+                previousClassName='page-item'
+                previousLinkClassName='page-link'
+                nextLabel='next'
+                nextClassName='page-item'
+                nextLinkClassName='page-link'
+                pageClassName='page-item'
+                pageLinkClassName='page-link'
+                activeClassName='page-item active'
+                activeLinkClassName={'page-link'}
+                breakLabel={'...'}
+                breakClassName={'page-item'}
+                breakLinkClassName={'page-link'}
+                pageCount={totalItems && totalItems}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={2}
+                onPageChange={(e) => setCurrentPage(e.selected + 1)}
+                containerClassName={'page pagination'}
+              />
+            </div>
           </div>
         </>
       )}
