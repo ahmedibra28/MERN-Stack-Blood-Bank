@@ -206,7 +206,7 @@ const BloodIssueScreen = ({ match }) => {
                                   bloodStores.map(
                                     (blood) =>
                                       blood.blood_component === 'Plasma' &&
-                                      blood.status === 'Stock' && (
+                                      blood.active && (
                                         <option
                                           key={blood._id}
                                           value={blood._id}
@@ -240,7 +240,7 @@ const BloodIssueScreen = ({ match }) => {
                                   bloodStores.map(
                                     (blood) =>
                                       blood.blood_component === 'Platelet' &&
-                                      blood.status === 'Stock' && (
+                                      blood.active && (
                                         <option
                                           key={blood._id}
                                           value={blood._id}
@@ -274,7 +274,7 @@ const BloodIssueScreen = ({ match }) => {
                                   bloodStores.map(
                                     (blood) =>
                                       blood.blood_component === 'RBC' &&
-                                      blood.status === 'Stock' && (
+                                      blood.active && (
                                         <option
                                           key={blood._id}
                                           value={blood._id}
@@ -308,7 +308,7 @@ const BloodIssueScreen = ({ match }) => {
                                   bloodStores.map(
                                     (blood) =>
                                       blood.blood_component === 'Whole Blood' &&
-                                      blood.status === 'Stock' && (
+                                      blood.active && (
                                         <option
                                           key={blood._id}
                                           value={blood._id}

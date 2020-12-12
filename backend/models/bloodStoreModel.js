@@ -30,8 +30,9 @@ const bloodStoreSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    status: {
-      type: String,
+    active: {
+      type: Boolean,
+      default: true,
     },
   },
   {

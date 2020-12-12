@@ -16,7 +16,7 @@ export const postBloodStore = asyncHandler(async (req, res) => {
   const blood_group = req.body.blood_group
   const blood_component = req.body.blood_component
   const unit = req.body.unit
-  const status = 'Stock'
+  const active = true
   const bag = req.body.bag.toUpperCase()
 
   let duplicateHandler = await BloodStoreModel.find({
@@ -36,7 +36,7 @@ export const postBloodStore = asyncHandler(async (req, res) => {
     blood_group,
     blood_component,
     unit,
-    status,
+    active,
     bag,
   }
 
@@ -58,7 +58,7 @@ export const putBloodStore = asyncHandler(async (req, res) => {
   const blood_group = req.body.blood_group
   const blood_component = req.body.blood_component
   const unit = req.body.unit
-  const status = 'Stock'
+  const active = true
   const bag = req.body.bag.toUpperCase()
 
   const bloodStoreFields = {
@@ -68,7 +68,7 @@ export const putBloodStore = asyncHandler(async (req, res) => {
     blood_group,
     blood_component,
     unit,
-    status,
+    active,
     bag,
   }
 

@@ -41,7 +41,7 @@ export const postBloodIssue = asyncHandler(async (req, res) => {
     const request = await BloodRequestModel.findById(patient)
     const store = await BloodStoreModel.findById(plasma)
     if (store) {
-      store.status = 'Issued'
+      store.active = false
       store.save()
     }
     if (request) {
@@ -56,7 +56,7 @@ export const postBloodIssue = asyncHandler(async (req, res) => {
     const request = await BloodRequestModel.findById(patient)
     const store = await BloodStoreModel.findById(platelet)
     if (store) {
-      store.status = 'Issued'
+      store.active = false
       store.save()
     }
     if (request) {
@@ -71,7 +71,7 @@ export const postBloodIssue = asyncHandler(async (req, res) => {
     const request = await BloodRequestModel.findById(patient)
     const store = await BloodStoreModel.findById(rbc)
     if (store) {
-      store.status = 'Issued'
+      store.active = false
       store.save()
     }
     if (request) {
@@ -85,7 +85,7 @@ export const postBloodIssue = asyncHandler(async (req, res) => {
     const request = await BloodRequestModel.findById(patient)
     const store = await BloodStoreModel.findById(wb)
     if (store) {
-      store.status = 'Issued'
+      store.active = false
       store.save()
     }
     if (request) {

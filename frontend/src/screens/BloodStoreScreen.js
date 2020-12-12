@@ -18,7 +18,7 @@ const initialValues = {
   blood_component: '',
   blood_group: '',
   unit: '',
-  status: 'Stock',
+  active: true,
   bag: '',
 }
 
@@ -62,7 +62,7 @@ const BloodStoreScreen = () => {
       blood_component: '',
       blood_group: '',
       unit: '',
-      status: 'Stock',
+      active: true,
       bag: '',
     })
     setEdit(false)
@@ -114,7 +114,7 @@ const BloodStoreScreen = () => {
   const indexOfLastItem = currentPage * itemsPerPage
   const indexOfFirstItem = indexOfLastItem - itemsPerPage
   const filteredItems =
-    bloodStores && bloodStores.filter((blood) => blood.status === 'Stock')
+    bloodStores && bloodStores.filter((blood) => blood.active)
   const currentItems =
     filteredItems && filteredItems.slice(indexOfFirstItem, indexOfLastItem)
   const totalItems =

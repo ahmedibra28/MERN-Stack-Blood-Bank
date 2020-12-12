@@ -17,8 +17,8 @@ const HomeScreen = () => {
   const filteredBloodStore = (e) =>
     bloodStores &&
     bloodStores.filter(
-      ({ status, blood_component, blood_group }) =>
-        status === e.status &&
+      ({ active, blood_component, blood_group }) =>
+        active === e.active &&
         blood_component === e.blood_component &&
         blood_group === e.blood_group
     )
@@ -44,7 +44,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Plasma',
                             blood_group: 'A+',
                           }).length}
@@ -56,7 +56,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Plasma',
                             blood_group: 'B+',
                           }).length}
@@ -68,7 +68,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Plasma',
                             blood_group: 'AB+',
                           }).length}
@@ -80,7 +80,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Plasma',
                             blood_group: 'O+',
                           }).length}
@@ -92,7 +92,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Plasma',
                             blood_group: 'A-',
                           }).length}
@@ -104,7 +104,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Plasma',
                             blood_group: 'B-',
                           }).length}
@@ -116,7 +116,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Plasma',
                             blood_group: 'AB-',
                           }).length}
@@ -128,7 +128,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Plasma',
                             blood_group: 'O-',
                           }).length}
@@ -151,7 +151,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Platelet',
                             blood_group: 'A+',
                           }).length}
@@ -163,7 +163,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Platelet',
                             blood_group: 'B+',
                           }).length}
@@ -175,7 +175,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Platelet',
                             blood_group: 'AB+',
                           }).length}
@@ -187,7 +187,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Platelet',
                             blood_group: 'O+',
                           }).length}
@@ -199,7 +199,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Platelet',
                             blood_group: 'A-',
                           }).length}
@@ -211,7 +211,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Platelet',
                             blood_group: 'B-',
                           }).length}
@@ -223,7 +223,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Platelet',
                             blood_group: 'AB-',
                           }).length}
@@ -235,7 +235,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Platelet',
                             blood_group: 'O-',
                           }).length}
@@ -258,7 +258,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'RBC',
                             blood_group: 'A+',
                           }).length}
@@ -270,7 +270,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'RBC',
                             blood_group: 'B+',
                           }).length}
@@ -282,7 +282,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'RBC',
                             blood_group: 'AB+',
                           }).length}
@@ -294,7 +294,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'RBC',
                             blood_group: 'O+',
                           }).length}
@@ -306,7 +306,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'RBC',
                             blood_group: 'A-',
                           }).length}
@@ -318,7 +318,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'RBC',
                             blood_group: 'B-',
                           }).length}
@@ -330,7 +330,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'RBC',
                             blood_group: 'AB-',
                           }).length}
@@ -342,7 +342,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'RBC',
                             blood_group: 'O-',
                           }).length}
@@ -365,7 +365,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Whole Blood',
                             blood_group: 'A+',
                           }).length}
@@ -377,7 +377,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Whole Blood',
                             blood_group: 'B+',
                           }).length}
@@ -389,7 +389,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Whole Blood',
                             blood_group: 'AB+',
                           }).length}
@@ -401,7 +401,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Whole Blood',
                             blood_group: 'O+',
                           }).length}
@@ -413,7 +413,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Whole Blood',
                             blood_group: 'A-',
                           }).length}
@@ -425,7 +425,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Whole Blood',
                             blood_group: 'B-',
                           }).length}
@@ -437,7 +437,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Whole Blood',
                             blood_group: 'AB-',
                           }).length}
@@ -449,7 +449,7 @@ const HomeScreen = () => {
                       <strong>
                         {bloodStores &&
                           filteredBloodStore({
-                            status: 'Stock',
+                            active: true,
                             blood_component: 'Whole Blood',
                             blood_group: 'O-',
                           }).length}
