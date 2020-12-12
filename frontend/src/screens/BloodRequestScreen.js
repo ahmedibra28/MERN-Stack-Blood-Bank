@@ -66,6 +66,7 @@ const BloodRequestScreen = ({ match }) => {
       rbc: '',
       wb: '',
     })
+    setEdit(false)
   }
 
   useEffect(() => {
@@ -141,7 +142,7 @@ const BloodRequestScreen = ({ match }) => {
                 className='btn-close'
                 data-bs-dismiss='modal'
                 aria-label='Close'
-                onClick={((e) => setEdit(false), formCleanHandler)}
+                onClick={formCleanHandler}
               ></button>
             </div>
             <div className='modal-body'>
@@ -275,7 +276,7 @@ const BloodRequestScreen = ({ match }) => {
                         type='button'
                         className='btn btn-secondary'
                         data-bs-dismiss='modal'
-                        onClick={((e) => setEdit(false), formCleanHandler)}
+                        onClick={formCleanHandler}
                       >
                         Close
                       </button>
