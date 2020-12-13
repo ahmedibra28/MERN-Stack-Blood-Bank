@@ -6,7 +6,15 @@ export const getBloodRequest = asyncHandler(async (req, res) => {
     .sort({ createdAt: -1 })
     .populate('user', ['name'])
 
-  res.json(bloodRequest)
+  const newBloodRequest = bloodRequest.filter(
+    (blood) =>
+      blood.blood_component.platelet > 0 ||
+      blood.blood_component.plasma > 0 ||
+      blood.blood_component.rbc > 0 ||
+      blood.blood_component.wb > 0
+  )
+
+  res.json(newBloodRequest)
 })
 
 export const postBloodRequest = asyncHandler(async (req, res) => {

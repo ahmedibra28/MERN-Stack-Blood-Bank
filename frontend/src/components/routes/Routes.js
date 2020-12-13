@@ -4,7 +4,6 @@ import { Route, Switch } from 'react-router-dom'
 import HomeScreen from '../../screens/HomeScreen'
 import LoginScreen from '../../screens/LoginScreen'
 import ProfileScreen from '../../screens/ProfileScreen'
-import RegisterScreen from '../../screens/RegisterScreen'
 import UserListScreen from '../../screens/UserListScreen'
 import BloodStoreScreen from '../../screens/BloodStoreScreen'
 import BloodRequestScreen from '../../screens/BloodRequestScreen'
@@ -13,13 +12,14 @@ import NotFound from '../NotFound'
 import PrivateRoute from '../routes/PrivateRoute'
 import AdminPrivateRoute from '../routes/AdminPrivateRoute'
 import BloodIssueScreen from '../../screens/BloodIssueScreen'
+import CommentScreen from '../../screens/CommentScreen'
 
 const Routes = () => {
   return (
     <section className='container'>
       <Switch>
         <Route path='/login' component={LoginScreen} />
-        {/* <Route path='/register' component={RegisterScreen} /> */}
+        <PrivateRoute path='/comment' component={CommentScreen} />
         <PrivateRoute path='/profile' component={ProfileScreen} />
         <PrivateRoute path='/blood-issue/:id' component={BloodIssueScreen} />
         <PrivateRoute exact path='/blood-store' component={BloodStoreScreen} />

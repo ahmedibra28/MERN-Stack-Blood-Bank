@@ -156,14 +156,7 @@ const BloodStoreScreen = () => {
               ) : (
                 errorCreate && <Message variant='danger'>{errorCreate}</Message>
               )}
-              {successDelete && (
-                <Message variant='success'>Blood Deleted Successfully</Message>
-              )}
-              {loadingDelete ? (
-                <Loader />
-              ) : (
-                errorDelete && <Message variant='danger'>{errorDelete}</Message>
-              )}
+
               {successUpdate && (
                 <Message variant='success'>Blood Updated Successfully</Message>
               )}
@@ -306,6 +299,14 @@ const BloodStoreScreen = () => {
         </button>
       </div>
 
+      {successDelete && (
+        <Message variant='success'>Blood Deleted Successfully</Message>
+      )}
+      {loadingDelete ? (
+        <Loader />
+      ) : (
+        errorDelete && <Message variant='danger'>{errorDelete}</Message>
+      )}
       {loading ? (
         <Loader />
       ) : error ? (
@@ -340,7 +341,7 @@ const BloodStoreScreen = () => {
                       <td>{blood.bag}</td>
                       <td>{blood.user && blood.user.name}</td>
 
-                      <td>
+                      <td className='btn-group' role='group'>
                         <button
                           className='btn btn-light btn-sm'
                           onClick={(e) => editHandler(blood)}

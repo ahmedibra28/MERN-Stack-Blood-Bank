@@ -9,6 +9,7 @@ import userRoutes from './routes/userRoutes.js'
 import bloodStoreRoutes from './routes/bloodStoreRoutes.js'
 import bloodRequestRoutes from './routes/bloodRequestRoutes.js'
 import bloodIssueRoutes from './routes/bloodIssueRoutes.js'
+import commentRoutes from './routes/commentRoutes.js'
 
 dotenv.config()
 
@@ -26,6 +27,7 @@ app.use('/api/users', userRoutes)
 app.use('/api/blood-store', bloodStoreRoutes)
 app.use('/api/blood-request', bloodRequestRoutes)
 app.use('/api/blood-issue', bloodIssueRoutes)
+app.use('/api/comment', commentRoutes)
 
 // Set static folder
 const __dirname = path.resolve()
@@ -46,7 +48,7 @@ app.use(notFound)
 
 app.use(errorHandler)
 
-const PORT = process.env.PORT || 80
+const PORT = process.env.PORT || 5000
 
 app.listen(
   PORT,

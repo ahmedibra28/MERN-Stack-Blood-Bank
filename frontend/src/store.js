@@ -23,11 +23,19 @@ import {
   bloodRequestListReducer,
   bloodRequestUpdateReducer,
 } from './reducers/bloodRequestReducers'
+
 import {
   bloodIssueCreateReducer,
   bloodIssueDeleteReducer,
   bloodIssueListReducer,
 } from './reducers/bloodIssueReducers'
+
+import {
+  commentCreateReducer,
+  commentDeleteReducer,
+  commentListReducer,
+  commentUpdateReducer,
+} from './reducers/commentReducers'
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -51,6 +59,11 @@ const reducer = combineReducers({
   bloodIssueList: bloodIssueListReducer,
   bloodIssueCreate: bloodIssueCreateReducer,
   bloodIssueDelete: bloodIssueDeleteReducer,
+
+  commentList: commentListReducer,
+  commentCreate: commentCreateReducer,
+  commentUpdate: commentUpdateReducer,
+  commentDelete: commentDeleteReducer,
 })
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

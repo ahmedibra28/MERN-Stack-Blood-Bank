@@ -14,6 +14,11 @@ const Header = () => {
   const authLinks = (
     <ul className='navbar-nav mr-right mb-2 mb-lg-0'>
       <li className='nav-item'>
+        <Link to='/comment' className='nav-link'>
+          Comment
+        </Link>
+      </li>
+      <li className='nav-item'>
         <Link to='/blood-request' className='nav-link'>
           Blood Request
         </Link>

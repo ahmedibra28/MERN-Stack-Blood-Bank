@@ -156,14 +156,7 @@ const BloodRequestScreen = ({ match }) => {
               ) : (
                 errorCreate && <Message variant='danger'>{errorCreate}</Message>
               )}
-              {successDelete && (
-                <Message variant='success'>Blood Deleted Successfully</Message>
-              )}
-              {loadingDelete ? (
-                <Loader />
-              ) : (
-                errorDelete && <Message variant='danger'>{errorDelete}</Message>
-              )}
+
               {successUpdate && (
                 <Message variant='success'>Blood Updated Successfully</Message>
               )}
@@ -304,6 +297,14 @@ const BloodRequestScreen = ({ match }) => {
         </button>
       </div>
 
+      {successDelete && (
+        <Message variant='success'>Blood Deleted Successfully</Message>
+      )}
+      {loadingDelete ? (
+        <Loader />
+      ) : (
+        errorDelete && <Message variant='danger'>{errorDelete}</Message>
+      )}
       {loading ? (
         <Loader />
       ) : error ? (
@@ -346,7 +347,7 @@ const BloodRequestScreen = ({ match }) => {
 
                       <td>{blood.user && blood.user.name}</td>
 
-                      <td>
+                      <td className='btn-group' role='group'>
                         <button
                           className='btn btn-light btn-sm'
                           onClick={(e) => editHandler(blood)}
