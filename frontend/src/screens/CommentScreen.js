@@ -158,7 +158,7 @@ const CommentScreen = () => {
       </div>
 
       <div className='d-flex justify-content-between'>
-        <h1>Blood Store</h1>
+        <h1>Comments</h1>
         <button
           className='btn btn-light btn-sm'
           data-bs-toggle='modal'
