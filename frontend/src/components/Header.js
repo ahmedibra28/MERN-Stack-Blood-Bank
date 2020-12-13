@@ -73,11 +73,11 @@ const Header = () => {
 
   const guestLinks = (
     <ul className='navbar-nav mr-right mb-2 mb-lg-0'>
-      <li className='nav-item'>
+      {/* <li className='nav-item'>
         <Link to='/register' className='nav-link'>
           Register
         </Link>
-      </li>
+      </li> */}
       <li className='nav-item'>
         <Link to='/login' className='nav-link'>
           Login
@@ -90,7 +90,7 @@ const Header = () => {
     <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
       <div className='container'>
         <Link className='navbar-brand' to='/'>
-          Navbar
+          YARDIMELi BLOOD BANK
         </Link>
         <button
           className='navbar-toggler'

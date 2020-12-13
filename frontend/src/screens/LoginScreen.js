@@ -55,12 +55,12 @@ const LoginScreen = ({ history }) => {
         </button>
       </form>
 
-      <div className='row py-3'>
+      {/* <div className='row py-3'>
         <div className='col'>
           New Customer?
           <Link to='/register'> Register</Link>
         </div>
-      </div>
+      </div> */}
     </FormContainer>
   )
 }

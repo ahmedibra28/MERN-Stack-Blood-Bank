@@ -19,7 +19,7 @@ const Routes = () => {
     <section className='container'>
       <Switch>
         <Route path='/login' component={LoginScreen} />
-        <Route path='/register' component={RegisterScreen} />
+        {/* <Route path='/register' component={RegisterScreen} /> */}
         <PrivateRoute path='/profile' component={ProfileScreen} />
         <PrivateRoute path='/blood-issue/:id' component={BloodIssueScreen} />
         <PrivateRoute exact path='/blood-store' component={BloodStoreScreen} />
