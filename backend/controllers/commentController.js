@@ -40,7 +40,6 @@ export const putComment = asyncHandler(async (req, res) => {
     updateComment.active = false
   }
 
-  console.log(updateComment)
   const updatedComment = await updateComment.save()
 
   if (updatedComment) {

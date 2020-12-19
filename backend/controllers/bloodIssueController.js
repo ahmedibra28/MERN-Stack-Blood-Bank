@@ -48,7 +48,6 @@ export const postBloodIssue = asyncHandler(async (req, res) => {
       request.blood_component.plasma =
         Number(request.blood_component.plasma) - 1
       request.save()
-      console.log(request)
     }
   }
 
@@ -63,7 +62,6 @@ export const postBloodIssue = asyncHandler(async (req, res) => {
       request.blood_component.platelet =
         Number(request.blood_component.platelet) - 1
       request.save()
-      console.log(request)
     }
   }
 
@@ -77,7 +75,6 @@ export const postBloodIssue = asyncHandler(async (req, res) => {
     if (request) {
       request.blood_component.rbc = Number(request.blood_component.rbc) - 1
       request.save()
-      console.log(request)
     }
   }
 
@@ -91,7 +88,6 @@ export const postBloodIssue = asyncHandler(async (req, res) => {
     if (request) {
       request.blood_component.wb = Number(request.blood_component.wb) - 1
       request.save()
-      console.log(request)
     }
   }
 

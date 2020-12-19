@@ -207,6 +207,7 @@ const BloodStoreScreen = () => {
                         onChange={handleChange}
                         value={values.blood_group}
                         className='form-control '
+                        required
                       >
                         <option value='' disabled>
                           Blood Group...
@@ -229,6 +230,7 @@ const BloodStoreScreen = () => {
                         onChange={handleChange}
                         value={values.blood_component}
                         className='form-control '
+                        required
                       >
                         <option value='' disabled>
                           Blood Component...
