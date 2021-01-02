@@ -172,8 +172,6 @@ const BloodStoreScreen = () => {
               ) : (
                 <form onSubmit={submitHandler}>
                   <div className='row gy-2'>
-                    <hr className='mt-0' />
-
                     <div className='form-group'>
                       <label htmlFor='donor'>Donor</label>
                       <input

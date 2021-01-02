@@ -9,6 +9,7 @@ import {
   userListReducer,
   userDeleteReducer,
   userUpdateReducer,
+  userLogHistoryReducer,
 } from './reducers/userReducers'
 import {
   bloodStoreCreateReducer,
@@ -45,6 +46,7 @@ const reducer = combineReducers({
   userList: userListReducer,
   userDelete: userDeleteReducer,
   userUpdate: userUpdateReducer,
+  userLogHistory: userLogHistoryReducer,
 
   bloodStoreList: bloodStoreListReducer,
   bloodStoreCreate: bloodStoreCreateReducer,

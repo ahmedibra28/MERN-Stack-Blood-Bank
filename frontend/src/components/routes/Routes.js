@@ -8,6 +8,7 @@ import UserListScreen from '../../screens/UserListScreen'
 import BloodStoreScreen from '../../screens/BloodStoreScreen'
 import BloodRequestScreen from '../../screens/BloodRequestScreen'
 import NotFound from '../NotFound'
+import UserLogHistoryScreen from '../../screens/LogHistoryScreen'
 
 import PrivateRoute from '../routes/PrivateRoute'
 import AdminPrivateRoute from '../routes/AdminPrivateRoute'
@@ -19,6 +20,10 @@ const Routes = () => {
     <section className='container'>
       <Switch>
         <Route path='/login' component={LoginScreen} />
+        <PrivateRoute
+          path='/admin/users/logs'
+          component={UserLogHistoryScreen}
+        />
         <PrivateRoute path='/comment' component={CommentScreen} />
         <PrivateRoute path='/profile' component={ProfileScreen} />
         <PrivateRoute path='/blood-issue/:id' component={BloodIssueScreen} />

@@ -59,7 +59,8 @@ const UserListScreen = ({ match }) => {
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you use?')) {
-      dispatch(deleteUser(id))
+      // dispatch(deleteUser(id))
+      console.error('You are not authorized this operation')
     }
   }
 
