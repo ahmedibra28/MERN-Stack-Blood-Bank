@@ -12,6 +12,9 @@ import {
   deleteComment,
 } from '../actions/commentActions'
 
+import { confirmAlert } from 'react-confirm-alert'
+import { Confirm } from '../components/Confirm'
+
 const CommentScreen = () => {
   const [comment, setComment] = useState('')
 
@@ -56,9 +59,7 @@ const CommentScreen = () => {
   }, [dispatch, successCreate, successUpdate, successDelete])
 
   const deleteHandler = (id) => {
-    if (window.confirm('Are you use?')) {
-      dispatch(deleteComment(id))
-    }
+    confirmAlert(Confirm(() => dispatch(deleteComment(id))))
   }
 
   const submitHandler = (e) => {

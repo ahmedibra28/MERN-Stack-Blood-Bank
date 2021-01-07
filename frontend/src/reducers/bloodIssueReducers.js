@@ -11,6 +11,7 @@ import {
   BLOOD_ISSUE_DELETE_SUCCESS,
   BLOOD_ISSUE_DELETE_FAIL,
 } from '../constants/bloodIssueConstants'
+import { CLEAR_ALERTS } from '../constants/userConstants'
 
 export const bloodIssueListReducer = (state = { bloodIssues: [] }, action) => {
   switch (action.type) {
@@ -56,6 +57,10 @@ export const bloodIssueCreateReducer = (state = {}, action) => {
       }
     case BLOOD_ISSUE_CREATE_RESET:
       return {}
+    case CLEAR_ALERTS:
+      return {
+        success: false,
+      }
 
     default:
       return state
@@ -77,6 +82,10 @@ export const bloodIssueDeleteReducer = (state = {}, action) => {
       return {
         loading: false,
         error: action.payload,
+      }
+    case CLEAR_ALERTS:
+      return {
+        success: false,
       }
 
     default:

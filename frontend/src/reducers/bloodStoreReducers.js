@@ -15,6 +15,7 @@ import {
   BLOOD_STORE_DELETE_SUCCESS,
   BLOOD_STORE_DELETE_FAIL,
 } from '../constants/bloodStoreConstants'
+import { CLEAR_ALERTS } from '../constants/userConstants'
 
 export const bloodStoreListReducer = (state = { bloodStores: [] }, action) => {
   switch (action.type) {
@@ -60,6 +61,10 @@ export const bloodStoreCreateReducer = (state = {}, action) => {
       }
     case BLOOD_STORE_CREATE_RESET:
       return {}
+    case CLEAR_ALERTS:
+      return {
+        success: false,
+      }
 
     default:
       return state
@@ -84,6 +89,10 @@ export const bloodStoreUpdateReducer = (state = {}, action) => {
       }
     case BLOOD_STORE_UPDATE_RESET:
       return {}
+    case CLEAR_ALERTS:
+      return {
+        success: false,
+      }
 
     default:
       return state
@@ -105,6 +114,10 @@ export const bloodStoreDeleteReducer = (state = {}, action) => {
       return {
         loading: false,
         error: action.payload,
+      }
+    case CLEAR_ALERTS:
+      return {
+        success: false,
       }
 
     default:

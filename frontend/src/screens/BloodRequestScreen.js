@@ -12,6 +12,8 @@ import {
   updateBloodRequest,
   deleteBloodRequest,
 } from '../actions/bloodRequestActions'
+import { confirmAlert } from 'react-confirm-alert'
+import { Confirm } from '../components/Confirm'
 
 const initialValues = {
   patient_id: '',
@@ -78,9 +80,7 @@ const BloodRequestScreen = ({ match }) => {
   }, [dispatch, successCreate, successUpdate, successDelete])
 
   const deleteHandler = (id) => {
-    if (window.confirm('Are you use?')) {
-      dispatch(deleteBloodRequest(id))
-    }
+    confirmAlert(Confirm(() => dispatch(deleteBloodRequest(id))))
   }
 
   const submitHandler = (e) => {

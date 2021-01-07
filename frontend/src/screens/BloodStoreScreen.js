@@ -12,6 +12,9 @@ import {
   deleteBloodStore,
 } from '../actions/bloodStoreActions'
 
+import { confirmAlert } from 'react-confirm-alert'
+import { Confirm } from '../components/Confirm'
+
 const initialValues = {
   donor: '',
   hb: '',
@@ -77,9 +80,7 @@ const BloodStoreScreen = () => {
   }, [dispatch, successCreate, successUpdate, successDelete])
 
   const deleteHandler = (id) => {
-    if (window.confirm('Are you use?')) {
-      dispatch(deleteBloodStore(id))
-    }
+    confirmAlert(Confirm(() => dispatch(deleteBloodStore(id))))
   }
 
   const submitHandler = (e) => {

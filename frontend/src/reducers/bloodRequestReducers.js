@@ -15,6 +15,7 @@ import {
   BLOOD_REQUEST_DELETE_SUCCESS,
   BLOOD_REQUEST_DELETE_FAIL,
 } from '../constants/bloodRequestConstants'
+import { CLEAR_ALERTS } from '../constants/userConstants'
 
 export const bloodRequestListReducer = (
   state = { bloodRequests: [] },
@@ -63,6 +64,10 @@ export const bloodRequestCreateReducer = (state = {}, action) => {
       }
     case BLOOD_REQUEST_CREATE_RESET:
       return {}
+    case CLEAR_ALERTS:
+      return {
+        success: false,
+      }
 
     default:
       return state
@@ -87,6 +92,10 @@ export const bloodRequestUpdateReducer = (state = {}, action) => {
       }
     case BLOOD_REQUEST_UPDATE_RESET:
       return {}
+    case CLEAR_ALERTS:
+      return {
+        success: false,
+      }
 
     default:
       return state
@@ -108,6 +117,10 @@ export const bloodRequestDeleteReducer = (state = {}, action) => {
       return {
         loading: false,
         error: action.payload,
+      }
+    case CLEAR_ALERTS:
+      return {
+        success: false,
       }
 
     default:

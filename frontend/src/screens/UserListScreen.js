@@ -10,6 +10,9 @@ import {
 } from '../actions/userActions'
 import ReactPaginate from 'react-paginate'
 
+import { confirmAlert } from 'react-confirm-alert'
+import { Confirm } from '../components/Confirm'
+
 const UserListScreen = ({ match }) => {
   const [id, setId] = useState(null)
   const [name, setName] = useState('')
@@ -58,10 +61,7 @@ const UserListScreen = ({ match }) => {
   }, [dispatch, successDelete, successUpdate, successCreateRegister])
 
   const deleteHandler = (id) => {
-    if (window.confirm('Are you use?')) {
-      // dispatch(deleteUser(id))
-      console.error('You are not authorized this operation')
-    }
+    // confirmAlert(Confirm(() => dispatch(deleteUser(id))))
   }
 
   const submitHandler = (e) => {

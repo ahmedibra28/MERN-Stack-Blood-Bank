@@ -15,6 +15,7 @@ import {
   COMMENT_DELETE_SUCCESS,
   COMMENT_DELETE_FAIL,
 } from '../constants/commentConstants'
+import { CLEAR_ALERTS } from '../constants/userConstants'
 
 export const commentListReducer = (state = { comments: [] }, action) => {
   switch (action.type) {
@@ -60,6 +61,10 @@ export const commentCreateReducer = (state = {}, action) => {
       }
     case COMMENT_CREATE_RESET:
       return {}
+    case CLEAR_ALERTS:
+      return {
+        success: false,
+      }
 
     default:
       return state
@@ -84,6 +89,10 @@ export const commentUpdateReducer = (state = {}, action) => {
       }
     case COMMENT_UPDATE_RESET:
       return {}
+    case CLEAR_ALERTS:
+      return {
+        success: false,
+      }
 
     default:
       return state
@@ -105,6 +114,10 @@ export const commentDeleteReducer = (state = {}, action) => {
       return {
         loading: false,
         error: action.payload,
+      }
+    case CLEAR_ALERTS:
+      return {
+        success: false,
       }
 
     default:
