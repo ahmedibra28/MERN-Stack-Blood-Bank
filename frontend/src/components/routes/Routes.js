@@ -14,12 +14,14 @@ import PrivateRoute from '../routes/PrivateRoute'
 import AdminPrivateRoute from '../routes/AdminPrivateRoute'
 import BloodIssueScreen from '../../screens/BloodIssueScreen'
 import CommentScreen from '../../screens/CommentScreen'
+import ReportScreen from '../../screens/ReportScreen'
 
 const Routes = () => {
   return (
     <section className='container'>
       <Switch>
         <Route path='/login' component={LoginScreen} />
+        <PrivateRoute path='/admin/report' component={ReportScreen} />
         <PrivateRoute
           path='/admin/users/logs'
           component={UserLogHistoryScreen}

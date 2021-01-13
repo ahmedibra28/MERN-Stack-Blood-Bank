@@ -75,6 +75,11 @@ const Header = () => {
                 Users Log
               </Link>
             </li>
+            <li>
+              <Link to='/admin/report' className='dropdown-item'>
+                Report
+              </Link>
+            </li>
           </ul>
         </li>
       )}
